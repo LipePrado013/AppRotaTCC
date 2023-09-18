@@ -1,14 +1,23 @@
 import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native"
 import img from '../assets/img/logo.png'
+import { useState } from "react";
 
 export default function Login() {
+
+    const [email, setEmail] = useState(null)
+    const [senha, setSenha] = useState(null)
     return (
         <>
             <View style={styles.container}>
                 <Image style={styles.img} source={img} />
 
-                <TextInput style={styles.input} />
-                <TextInput style={styles.input} />
+                <TextInput style={styles.input}
+                    onChangeText={value => setSenha(value)}
+                    placeholder="E-mail" />
+                <TextInput style={styles.input}
+                    onChangeText={value => setSenha(value)}
+                    secureTextEntry={true} placeholder="Senha" />
+
                 <TouchableOpacity style={styles.btnLogar}>
                     <Text style={styles.textBTN}>
                         Logar
