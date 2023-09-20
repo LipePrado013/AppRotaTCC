@@ -2,6 +2,7 @@ import { FlatList, Image, ScrollView, Text, TouchableOpacity, View } from "react
 import { StyleSheet } from "react-native";
 import img from '../assets/img/museupesca.png'
 import img1 from '../assets/img/museu-do-cafe.png'
+import './Home.css'
 
 const cards = [
     {
@@ -28,8 +29,8 @@ export default function Home() {
             <ScrollView >
                 <View style={styles.container}>
 
-                    <View style={styles.contedo}>
-                        <TouchableOpacity style={styles.BtnTop}>
+                    <View  style={styles.conteudo}>
+                        <TouchableOpacity  style={styles.BtnTop}>
                             <Image style={styles.img} source={img1} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.BtnTop}>
@@ -37,22 +38,33 @@ export default function Home() {
                         </TouchableOpacity>
                     </View>
 
-
                     <ScrollView horizontal={true} style={styles.containerCard}>
-                        <View style={styles.cardscont}>
-                            <FlatList style={styles.CardList}
+
+                            {/* <FlatList style={styles.CardList}
                                 data={cards}
                                 // showsHorizontalScrollIndicator={true}
                                 keyExtractor={(item) => String(item.id)}
                                 renderItem={({ item }) =>
+                            <View style={styles.cardscont}>
                                     <View style={styles.cards}>
                                         <Image style={styles.imgcard} source={item.image} />
                                         <Text>{item.titulo}</Text>
                                         <Text >{item.data}</Text>
                                     </View>
-                                }
-                            />
-                        </View>
+                            </View>
+                            }
+                            /> */}
+
+                        <a style={styles.cardscont} >
+                            {cards.map((card) => (
+
+                                <TouchableOpacity style={styles.cards} >
+                                    <Image source={card.image} style={styles.imgcard}/>
+                                </TouchableOpacity>
+
+                            ))}
+                        </a>
+                        
                     </ScrollView>
                 </View>
             </ScrollView>
@@ -62,18 +74,15 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-
         paddingBottom: 14,
-        borderWidth: 1,
         marginBottom: 80
     },
     img: {
         width: '100%',
         height: '100%'
     },
-    contedo: {
-        paddingStart: 14,
-        paddingEnd: 14,
+    conteudo: {
+       
         display: 'flex',
         flexDirection: 'column',
         gap: 10,
@@ -85,42 +94,40 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         objectFit: 'cover',
         overflow: 'hidden',
-        borderWidth: 1,
         width: '100%',
-        height: 100,
-        borderRadius: 10,
-        backgroundColor: '#000000aa',
+        height: 150,
+      
     },
     containerCard: {
-        borderWidth: 1,
-        borderColor: 'red',
-        display: 'flex',
-    },
-    CardList: {
-        borderWidth: 1,
+    
         display: 'flex',
         flexDirection: 'row',
     },
+    CardList: {
+        borderColor: 'pink',
+        borderWidth: 4,
+        display: 'flex',
+    
+    },
     cardscont: {
+        borderWidth:0,
         borderWidth: 2,
         width: '100%',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
+
     cards: {
-        borderRadius: 10,
-        borderWidth: 2,
-        borderColor: 'green',
-        width: 200,
-        height: 250,
-        margin: 10,
-        display: 'flex',
-        alignItems: 'center',
-        overflow: 'hidden',
-    },
+    backgroundColor:'gray',
+    margin:10,
+    width:300,
+    height:200,
+    borderRadius:20,
+    overflow:'hidden',
+    }, 
     imgcard: {
         width: '100%',
-        height: 100,
+        height: '100%',
         objectFit: 'cover',
     },
 });
