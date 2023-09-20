@@ -1,8 +1,10 @@
+import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import TabRoutes from './Tab.routes'
 import { Entypo, FontAwesome5 } from '@expo/vector-icons';
 import Login from '../pages/Login';
 import Cadastro from '../pages/Cadastro';
+
 
 const Drawer = createDrawerNavigator()
 
@@ -10,17 +12,22 @@ export default function DrawerRoutes() {
     return (
         <Drawer.Navigator screenOptions={{
             title: '',
+            headerTintColor:'#fff',
             drawerActiveTintColor: '#16FA9F',
             drawerInactiveTintColor: '#fff',
             drawerStyle: {
                 backgroundColor: "#121212",
-                color: '#fff'
+                color: '#00f',
+            },
+            headerStyle:{
+                backgroundColor: "#121212",
             }
         }}>
             <Drawer.Screen
-                name='home'
+                name='Home'
                 component={TabRoutes}
                 options={{
+                    
                     drawerLabel: 'Home',
                     drawerIcon: ({ color, size }) => <Entypo name="home" size={size} color={color} />
                 }}
@@ -61,3 +68,8 @@ export default function DrawerRoutes() {
     )
 
 }
+// const styles = StyleSheet.create({
+//     Drawer: {
+//         backgroundColor:'blue',
+//     }
+// });
