@@ -21,6 +21,7 @@ export default function DrawerRoutes() {
             },
             headerStyle:{
                 backgroundColor: "#121212",
+             innerWidth:0
             }
         }}>
             <Drawer.Screen

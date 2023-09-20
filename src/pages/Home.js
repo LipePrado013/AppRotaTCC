@@ -2,6 +2,7 @@ import { FlatList, Image, ScrollView, Text, TouchableOpacity, View } from "react
 import { StyleSheet } from "react-native";
 import img from '../assets/img/museupesca.png'
 import img1 from '../assets/img/museu-do-cafe.png'
+import img2 from '../assets/img/Aquario.png'
 import './Home.css'
 
 const cards = [
@@ -19,6 +20,13 @@ const cards = [
         data: 'inaugurado em 1998',
         // type: 0
     },
+    {
+        id: 3,
+        image: img2,
+        titulo: 'Awquario',
+        data: 'inaugurado em 1998',
+        // type: 0
+    },
 ]
 
 
@@ -27,45 +35,57 @@ export default function Home() {
     return (
         <>
             <ScrollView >
-                <View style={styles.container}>
+                <View style={styles.titles}>
+                    <h2>
+                        recomendações
+                    </h2> 
+                </View>
+                    <View style={styles.container}>
 
-                    <View  style={styles.conteudo}>
-                        <TouchableOpacity  style={styles.BtnTop}>
-                            <Image style={styles.img} source={img1} />
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.BtnTop}>
-                            <Image style={styles.img} source={img} />
-                        </TouchableOpacity>
+                        <View  style={styles.conteudo}>
+                            <TouchableOpacity  style={styles.BtnTop}>
+                                <Image style={styles.img} source={img1} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.BtnTop}>
+                                <Image style={styles.img} source={img} />
+                            </TouchableOpacity>
+                        </View>
+               
+                    <View style={styles.titles }>
+                            <h3 >
+                                Mais locais da região
+                            </h3>
                     </View>
+                        <ScrollView horizontal={true} >
 
-                    <ScrollView horizontal={true} style={styles.containerCard}>
+                                {/* <FlatList style={styles.CardList}
+                                    data={cards}
+                                    // showsHorizontalScrollIndicator={true}
+                                    keyExtractor={(item) => String(item.id)}
+                                    renderItem={({ item }) =>
+                                <View style={styles.cardscont}>
+                                        <View style={styles.cards}>
+                                            <Image style={styles.imgcard} source={item.image} />
+                                            <Text>{item.titulo}</Text>
+                                            <Text >{item.data}</Text>
+                                        </View>
+                                </View>
+                                }
+                                /> */}
+                                
 
-                            {/* <FlatList style={styles.CardList}
-                                data={cards}
-                                // showsHorizontalScrollIndicator={true}
-                                keyExtractor={(item) => String(item.id)}
-                                renderItem={({ item }) =>
-                            <View style={styles.cardscont}>
-                                    <View style={styles.cards}>
-                                        <Image style={styles.imgcard} source={item.image} />
-                                        <Text>{item.titulo}</Text>
-                                        <Text >{item.data}</Text>
-                                    </View>
-                            </View>
-                            }
-                            /> */}
+                            <a style={styles.cardscont} >
+                                {cards.map((card) => (
 
-                        <a style={styles.cardscont} >
-                            {cards.map((card) => (
+                                    <TouchableOpacity style={styles.cards} >
+                                        <Image source={card.image} style={styles.imgcard}/>
+                                    </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.cards} >
-                                    <Image source={card.image} style={styles.imgcard}/>
-                                </TouchableOpacity>
-
-                            ))}
-                        </a>
+                                ))}
+                            </a>
                         
-                    </ScrollView>
+                        </ScrollView>
+                 
                 </View>
             </ScrollView>
         </>
@@ -74,8 +94,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom: 14,
-        marginBottom: 80
+        
     },
     img: {
         width: '100%',
@@ -98,10 +117,12 @@ const styles = StyleSheet.create({
         height: 150,
       
     },
-    containerCard: {
+    titles: {
+        overflow: 'hidden',
     
+        fontFamily: 'Arial',
         display: 'flex',
-        flexDirection: 'row',
+    alignItems:'center'
     },
     CardList: {
         borderColor: 'pink',
