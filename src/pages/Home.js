@@ -6,24 +6,27 @@ import img2 from '../assets/img/Aquario.png'
 import './Home.css'
 
 const cards = [
-    {
+    {//descrição limite de 128 Caracteres. AVISO
         id: 1,
         image: img,
         titulo: 'museu do da pesca',
+        descricao: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos.',
         data: 'inaugurado em 1998',
         // type: 0
     },
-    {
+    {//descrição limite de 128 Caracteres. AVISO
         id: 2,
         image: img1,
         titulo: 'museu do café',
+        descricao: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético.',
         data: 'inaugurado em 1998',
         // type: 0
     },
-    {
+    {//descrição limite de 128 Caracteres. AVISO
         id: 3,
         image: img2,
-        titulo: 'Awquario',
+        titulo: 'Aquario',
+        descricao: 'Há sete décadas encantando gerações, o Aquário de Santos é o mais antigo do Brasil e desde 1995 consta do Guinness World Record.',
         data: 'inaugurado em 1998',
         // type: 0
     },
@@ -38,55 +41,56 @@ export default function Home() {
                 <View style={styles.titles}>
                     <h2>
                         recomendações
-                    </h2> 
+                    </h2>
                 </View>
-                    <View style={styles.container}>
+                <View style={styles.container}>{/*  container */}
 
-                        <View  style={styles.conteudo}>
-                            <TouchableOpacity  style={styles.BtnTop}>
-                                <Image style={styles.img} source={img1} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.BtnTop}>
-                                <Image style={styles.img} source={img} />
-                            </TouchableOpacity>
-                        </View>
-               
-                    <View style={styles.titles }>
-                            <h3 >
-                                Mais locais da região
-                            </h3>
+                    <View style={styles.conteudo}>
+
+                        <a style={styles.conteudo} >
+
+                            {cards.map((card) => (
+
+                                <TouchableOpacity style={styles.toplop}>
+                                    <Image style={styles.img} source={card.image} />
+                                    <div className="btnRecomendacao">
+                                        <h2>{card.titulo}</h2>
+                                        <p>{card.descricao}</p>
+                                    </div>
+                                </TouchableOpacity>
+
+                            ))}
+                        </a>
+
+
                     </View>
-                        <ScrollView horizontal={true} >
 
-                                {/* <FlatList style={styles.CardList}
-                                    data={cards}
-                                    // showsHorizontalScrollIndicator={true}
-                                    keyExtractor={(item) => String(item.id)}
-                                    renderItem={({ item }) =>
-                                <View style={styles.cardscont}>
-                                        <View style={styles.cards}>
-                                            <Image style={styles.imgcard} source={item.image} />
-                                            <Text>{item.titulo}</Text>
-                                            <Text >{item.data}</Text>
-                                        </View>
-                                </View>
-                                }
-                                /> */}
-                                
+                    <View style={styles.titles}>
+                        <h3 >
+                            Mais locais da região
+                        </h3>
+                    </View>
+                    <ScrollView horizontal={true} >
 
-                            <a style={styles.cardscont} >
-                                {cards.map((card) => (
+                        <a style={styles.cardscont} >
+                            {cards.map((card) => (
 
-                                    <TouchableOpacity style={styles.cards} >
-                                        <Image source={card.image} style={styles.imgcard}/>
-                                    </TouchableOpacity>
+                                <TouchableOpacity style={styles.cards} >
+                                    <Image source={card.image} style={styles.imgcard} />
+                                    <div className="boxCard">
+                                        <h2>{card.titulo}</h2>
+                                        <p>{card.descricao}</p>
+                                    </div>
+                                </TouchableOpacity>
 
-                                ))}
-                            </a>
-                        
-                        </ScrollView>
-                 
-                </View>
+                            ))}
+                        </a>
+
+                    </ScrollView>
+
+
+
+                </View> {/* fim container */}
             </ScrollView>
         </>
     )
@@ -94,44 +98,37 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        
+        paddingBottom: 80,
     },
+    toplop: {
+        width: '100%',
+        height: 150,
+    },
+
     img: {
         width: '100%',
         height: '100%'
     },
     conteudo: {
-       
         display: 'flex',
         flexDirection: 'column',
-        gap: 10,
-        paddingTop: 14,
-        paddingBottom: 14,
-    },
-    BtnTop: {
-        display: 'flex',
-        alignItems: 'flex-end',
-        objectFit: 'cover',
-        overflow: 'hidden',
-        width: '100%',
-        height: 150,
-      
+        color: '#FFF',
+        gap: 10
     },
     titles: {
-        overflow: 'hidden',
-    
+
         fontFamily: 'Arial',
         display: 'flex',
-    alignItems:'center'
+        alignItems: 'center'
     },
     CardList: {
         borderColor: 'pink',
         borderWidth: 4,
         display: 'flex',
-    
+
     },
     cardscont: {
-        borderWidth:0,
+        borderWidth: 0,
         borderWidth: 2,
         width: '100%',
         display: 'flex',
@@ -139,13 +136,13 @@ const styles = StyleSheet.create({
     },
 
     cards: {
-    backgroundColor:'gray',
-    margin:10,
-    width:300,
-    height:200,
-    borderRadius:20,
-    overflow:'hidden',
-    }, 
+        backgroundColor: 'gray',
+        margin: 10,
+        width: 300,
+        height: 200,
+        borderRadius: 20,
+        overflow: 'hidden',
+    },
     imgcard: {
         width: '100%',
         height: '100%',
