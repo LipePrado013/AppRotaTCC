@@ -12,23 +12,23 @@ export default function DrawerRoutes() {
     return (
         <Drawer.Navigator screenOptions={{
             title: '',
-            headerTintColor:'#fff',
+            headerTintColor: '#fff',
             drawerActiveTintColor: '#16FA9F',
             drawerInactiveTintColor: '#fff',
             drawerStyle: {
                 backgroundColor: "#121212",
                 color: '#00f',
             },
-            headerStyle:{
+            headerStyle: {
                 backgroundColor: "#121212",
-             innerWidth:0
+                innerWidth: 0
             }
         }}>
             <Drawer.Screen
                 name='Home'
                 component={TabRoutes}
                 options={{
-                    
+
                     drawerLabel: 'Home',
                     drawerIcon: ({ color, size }) => <Entypo name="home" size={size} color={color} />
                 }}

@@ -1,10 +1,33 @@
+import Animated from 'react-native-reanimated';
 import { FlatList, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { StyleSheet } from "react-native";
 import img from '../assets/img/museupesca.png'
 import img1 from '../assets/img/museu-do-cafe.png'
 import img2 from '../assets/img/Aquario.png'
-import './Home.css'
 
+
+import './Home.css'
+import { Component } from 'react';
+
+const cards2 = [
+    {//descrição limite de 128 Caracteres. AVISO
+        id: 1,
+        image: img,
+        titulo: 'museu do da pesca',
+        descricao: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos.',
+        data: 'inaugurado em 1998',
+        // type: 0
+    },
+    {//descrição limite de 128 Caracteres. AVISO
+        id: 2,
+        image: img1,
+        titulo: 'museu do café',
+        descricao: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético.',
+        data: 'inaugurado em 1998',
+        // type: 0
+    },
+
+]
 const cards = [
     {//descrição limite de 128 Caracteres. AVISO
         id: 1,
@@ -32,8 +55,7 @@ const cards = [
     },
 ]
 
-
-export default function Home() {
+export default function Home({ navigation }) {
 
     return (
         <>
@@ -49,9 +71,9 @@ export default function Home() {
 
                         <a style={styles.conteudo} >
 
-                            {cards.map((card) => (
+                            {cards2.map((card) => (
 
-                                <TouchableOpacity style={styles.toplop}>
+                                <TouchableOpacity style={styles.toplop} onPress={() => { navigation.navigate('local') }}>
                                     <Image style={styles.img} source={card.image} />
                                     <div className="btnRecomendacao">
                                         <h2>{card.titulo}</h2>

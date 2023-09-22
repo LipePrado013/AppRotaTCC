@@ -1,4 +1,4 @@
-import React from "react";
+import React, { isValidElement } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
     AntDesign,
@@ -10,6 +10,7 @@ import {
 import Home from "../pages/Home";
 import Cadastro from "../pages/Cadastro";
 import Login from "../pages/Login";
+import Pages from '../pages/pagesLocal'
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ export default function TabRoutes() {
                         return <Foundation name="magnifying-glass" size={size} color={color} />
                     }
                 }} />
-                <Tab.Screen name='MAps' component={Home} options={{
+                <Tab.Screen name='Maps' component={Home} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
@@ -63,6 +64,7 @@ export default function TabRoutes() {
                         return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
                     }
                 }} />
+
             </Tab.Navigator >
         </>
     )
