@@ -4,8 +4,8 @@ import { useState } from "react";
 
 export default function Cadastro() {
 
-    const [email, setEmail] = useState(null)
-    const [senha, setSenha] = useState(null)
+    // const [email, setEmail] = useState(null)
+    // const [senha, setSenha] = useState(null)
     return (
         <>
             <View style={styles.container}>

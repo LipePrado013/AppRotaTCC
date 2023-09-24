@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import TabRoutes from './Tab.routes'
+import TabRoutes from "./Tab.Routes";
 import { Entypo, FontAwesome5 } from '@expo/vector-icons';
-import Login from '../pages/Login';
-import Cadastro from '../pages/Cadastro';
-
+import Locais from "../pages/Locais";
+import Login from "../pages/Login";
+import Cadastro from "../pages/Cadastro";
 
 const Drawer = createDrawerNavigator()
 
@@ -33,17 +33,10 @@ export default function DrawerRoutes() {
                     drawerIcon: ({ color, size }) => <Entypo name="home" size={size} color={color} />
                 }}
             />
-            <Drawer.Screen
-                name='guia'
-                component={TabRoutes}
-                options={{
-                    drawerLabel: 'Home',
-                    drawerIcon: ({ color, size }) => <FontAwesome5 name="map-signs" size={size} color={color} />
-                }}
-            />
+
             <Drawer.Screen
                 name='mapa'
-                component={TabRoutes}
+                component={Locais}
                 options={{
                     drawerLabel: 'Mapa',
                     drawerIcon: ({ color, size }) => <FontAwesome5 name="map-marked-alt" size={size} color={color} />

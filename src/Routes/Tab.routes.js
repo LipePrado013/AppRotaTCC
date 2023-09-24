@@ -8,9 +8,7 @@ import {
 } from '@expo/vector-icons';
 
 import Home from "../pages/Home";
-import Cadastro from "../pages/Cadastro";
-import Login from "../pages/Login";
-import Pages from '../pages/pagesLocal'
+import Locais from "../pages/Locais";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +44,7 @@ export default function TabRoutes() {
                         return <AntDesign name="home" size={size} color={color} />
                     }
                 }} />
-                <Tab.Screen name='Pesquisa' component={Home} options={{
+                <Tab.Screen name='pesquisa' component={Locais} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <Foundation name="magnifying-glass" size={size} color={color} />
@@ -55,7 +53,7 @@ export default function TabRoutes() {
                         return <Foundation name="magnifying-glass" size={size} color={color} />
                     }
                 }} />
-                <Tab.Screen name='Maps' component={Home} options={{
+                <Tab.Screen name='Maps' component={Locais} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
@@ -64,6 +62,7 @@ export default function TabRoutes() {
                         return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
                     }
                 }} />
+
 
             </Tab.Navigator >
         </>
