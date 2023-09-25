@@ -7,10 +7,11 @@ export default function Login({ navigation }) {
 
     const [email, setEmail] = useState(null)
     const [senha, setSenha] = useState(null)
-    console.log(
-        'email ' + email,
-        'senha ' + senha,
-    )
+
+    // console.log(
+    //     'email ' + email,
+    //     'senha ' + senha,
+    // )
 
     return (
         <>
@@ -18,7 +19,7 @@ export default function Login({ navigation }) {
                 <Image style={styles.img} source={img} />
 
                 <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
+                    onChangeText={value => setEmail(value)}
                     placeholder="E-mail" />
                 <TextInput style={styles.input}
                     onChangeText={value => setSenha(value)}

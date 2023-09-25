@@ -36,21 +36,21 @@ const cards = [
 ]
 
 
-export const cards2Data = [
+export const cards2 = [
     {// deacricao limite de 128 caracteres
         id: 1,
         image: img,
-        titulo: 'museu do da pesca',
+        titulo: 'Museu da pesca',
         descricao: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos.',
-        data: 'inaugurado em 1998',
+        data: 'Inaugurado em 1998',
 
     },
     {
         id: 2,
         image: img1,
-        titulo: 'museu do café',
+        titulo: 'Museu do café',
         descricao: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético.',
-        data: 'inaugurado em 1998',
+        data: 'Inaugurado em 1998',
 
     },
 
@@ -66,36 +66,39 @@ export default function Home({ navigation }) {
                 </View>
                 <View style={styles.container}>
                     <View style={styles.conteudo}>
-                        <TouchableOpacity style={styles.conteudo} >
-                            {/* <Recomendados /> */}
-                            {cards2Data.map((item) => (
-                                <TouchableOpacity style={styles.toplop} onPress={() => navigation.navigate('locais', { item: item })}>
-                                    <Image style={styles.img} source={item.image} />
-                                    <View style={styles.topText}>
-                                        <Text style={styles.h2}>{item.titulo}</Text>
-                                        <Text style={styles.p2}>{item.descricao}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            ))}
-                        </TouchableOpacity>
 
+                        <FlatList data={cards2} renderItem={({ item }) =>
+                            <TouchableOpacity style={{
+                                width: '100%',
+                                height: 150,
+                                marginTop: 10,
+                            }} onPress={() => navigation.navigate('locais', { item: item })}>
+                                <Image style={styles.img} source={item.image} />
+                                <View style={styles.topText}>
+                                    <Text style={styles.h2}>{item.titulo}</Text>
+                                    <Text style={styles.p2}>{item.descricao}</Text>
+                                </View>
+                            </TouchableOpacity>
+
+                        } />
 
                     </View>
                     <View style={styles.titles}>
                         <Text style={styles.TitleDestaque}> Destaques </Text>
                     </View>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} >
-                        <TouchableOpacity style={styles.cardscont} >
-                            {cards.map((card) => (
-                                <TouchableOpacity style={styles.cards} >
-                                    <Image source={card.image} style={styles.imgcard} />
-                                    <View style={styles.topText}>
-                                        <Text style={styles.h2}>{card.titulo}</Text>
-                                        <Text style={styles.p2}>{card.descricao}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            ))}
-                        </TouchableOpacity>
+
+                        {cards.map((item) => (
+                            <TouchableOpacity style={styles.cards} onPress={() => navigation.navigate('locais', { item: item })}>
+                                <Image source={item.image} style={styles.imgcard} />
+                                <View style={styles.topText}>
+                                    <Text style={styles.h2}>{item.titulo}</Text>
+                                    <Text style={styles.p2}>{item.descricao}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        ))}
+
+
                     </ScrollView>
                 </View>
             </ScrollView >
