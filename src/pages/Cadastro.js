@@ -2,42 +2,49 @@ import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "reac
 import img from '../assets/img/logo.png'
 import { useState } from "react";
 
-export default function Cadastro() {
+export default function Cadastro({ navigation }) {
 
-    // const [email, setEmail] = useState(null)
-    // const [senha, setSenha] = useState(null)
+    const [nome, setNome] = useState(null)
+    const [SobreNome, setSobreNome] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [senha, setSenha] = useState(null)
+    const [ConfirmaSenha, setConfirmaSenha] = useState(null)
+
+    // console.log(
+    //     'nome ' + nome,
+    //     'sobrenome ' + SobreNome,
+    //     'email ' + email,
+    //     'senha ' + senha,
+    //     'confrmasenha ' + ConfirmaSenha
+    // )
+
     return (
         <>
             <View style={styles.container}>
                 <Image style={styles.img} source={img} />
 
                 <TextInput style={styles.input}
-                    onChangeText={value => setEmail(value)}
-
+                    onChangeText={value => setNome(value)}
                     placeholder="Nome" />
                 <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
+                    onChangeText={value => setSobreNome(value)}
                     placeholder="Sobrenome" />
                 <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
+                    onChangeText={value => setEmail(value)}
                     placeholder="E-mail" />
                 <TextInput style={styles.input}
                     onChangeText={value => setSenha(value)}
                     secureTextEntry={true} placeholder="Senha" />
                 <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
+                    onChangeText={value => setConfirmaSenha(value)}
                     secureTextEntry={true} placeholder="Confirma senha" />
 
-                <TouchableOpacity style={styles.btnLogar}>
-                    <Text style={styles.textBTN}>
-                        Logar
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btncadastar} >
+                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('login')}>
                     <Text style={styles.textBTN}>
                         Cadastar-se
                     </Text>
                 </TouchableOpacity>
+
             </View>
         </>
     )

@@ -8,7 +8,7 @@ import {
 } from '@expo/vector-icons';
 
 import Home from "../pages/Home";
-import Locais from "../pages/Locais";
+import Map from "../pages/Map";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ export default function TabRoutes() {
             }}>
                 {/* <Screen name='login' component=0{Login} /> */}
 
-                <Tab.Screen name='Home' component={Home} options={{
+                <Tab.Screen name='home2' component={Home} options={{
                     headerShown: false /*, tabBarBadge: 6 [balão indicador ]*/, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <AntDesign name="home" size={size} color={color} />
@@ -44,7 +44,7 @@ export default function TabRoutes() {
                         return <AntDesign name="home" size={size} color={color} />
                     }
                 }} />
-                <Tab.Screen name='pesquisa' component={Locais} options={{
+                <Tab.Screen name='pesquisa' component={Home} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <Foundation name="magnifying-glass" size={size} color={color} />
@@ -53,7 +53,7 @@ export default function TabRoutes() {
                         return <Foundation name="magnifying-glass" size={size} color={color} />
                     }
                 }} />
-                <Tab.Screen name='Maps' component={Locais} options={{
+                <Tab.Screen name='Maps' component={Map} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />

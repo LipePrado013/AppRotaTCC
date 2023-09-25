@@ -3,27 +3,11 @@ import { FlatList, Image, ScrollView, Text, TouchableOpacity, View, StyleSheet }
 import img from '../assets/img/museupesca.png'
 import img1 from '../assets/img/museu-do-cafe.png'
 import img2 from '../assets/img/Aquario.png'
+import Recomendados from "../components/recomenda"
 
 
-const cards2 = [
-    {
-        id: 1,
-        image: img,
-        titulo: 'museu do da pesca',
-        descricao: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos.',
-        data: 'inaugurado em 1998',
 
-    },
-    {
-        id: 2,
-        image: img1,
-        titulo: 'museu do café',
-        descricao: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético.',
-        data: 'inaugurado em 1998',
 
-    },
-
-]
 
 const cards = [
     {
@@ -48,53 +32,61 @@ const cards = [
         titulo: 'Aquario',
         descricao: 'Há sete décadas encantando gerações, o Aquário de Santos é o mais antigo do Brasil e desde 1995 consta do Guinness World Record.',
         data: 'inaugurado em 1998',
-
     },
 ]
-export default function Home() {
+
+
+export const cards2Data = [
+    {// deacricao limite de 128 caracteres
+        id: 1,
+        image: img,
+        titulo: 'museu do da pesca',
+        descricao: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos.',
+        data: 'inaugurado em 1998',
+
+    },
+    {
+        id: 2,
+        image: img1,
+        titulo: 'museu do café',
+        descricao: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético.',
+        data: 'inaugurado em 1998',
+
+    },
+
+]
+// onPress={() => navigation.navigate('login')} 
+export default function Home({ navigation }) {
 
     return (
         <>
-            <ScrollView >
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.titles}>
-
-                    <Text> Recomendados </Text>
-
+                    <Text style={styles.TitleDestaque}> Recomendados </Text>
                 </View>
                 <View style={styles.container}>
-
                     <View style={styles.conteudo}>
-
                         <TouchableOpacity style={styles.conteudo} >
-
-                            {cards2.map((card) => (
-
-                                <TouchableOpacity style={styles.toplop} >
-                                    <Image style={styles.img} source={card.image} />
-
+                            {/* <Recomendados /> */}
+                            {cards2Data.map((item) => (
+                                <TouchableOpacity style={styles.toplop} onPress={() => navigation.navigate('locais', { item: item })}>
+                                    <Image style={styles.img} source={item.image} />
                                     <View style={styles.topText}>
-
-                                        <Text style={styles.h2}>{card.titulo}</Text>
-                                        <Text style={styles.p2}>{card.descricao}</Text>
-
+                                        <Text style={styles.h2}>{item.titulo}</Text>
+                                        <Text style={styles.p2}>{item.descricao}</Text>
                                     </View>
                                 </TouchableOpacity>
-
-
                             ))}
                         </TouchableOpacity>
 
 
                     </View>
-
                     <View style={styles.titles}>
-                        <Text> Destaques </Text>
+                        <Text style={styles.TitleDestaque}> Destaques </Text>
                     </View>
-                    <ScrollView horizontal={true} >
-
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false} >
                         <TouchableOpacity style={styles.cardscont} >
                             {cards.map((card) => (
-
                                 <TouchableOpacity style={styles.cards} >
                                     <Image source={card.image} style={styles.imgcard} />
                                     <View style={styles.topText}>
@@ -102,13 +94,12 @@ export default function Home() {
                                         <Text style={styles.p2}>{card.descricao}</Text>
                                     </View>
                                 </TouchableOpacity>
-
                             ))}
                         </TouchableOpacity>
-
                     </ScrollView>
                 </View>
-            </ScrollView>
+            </ScrollView >
+
         </>
     )
 }
@@ -131,6 +122,11 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#000000ae'
     },
+    TitleDestaque: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        padding: 10,
+    },
     h2: {
         color: '#FFF',
         fontSize: 25,
@@ -147,7 +143,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         color: '#FFF',
-        gap: 10
+        gap: 10, shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.5,
+        shadowRadius: 7,
     },
     titles: {
         display: 'flex',
@@ -160,6 +159,10 @@ const styles = StyleSheet.create({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.5,
+        shadowRadius: 7,
     },
     cards: {
         backgroundColor: 'gray',

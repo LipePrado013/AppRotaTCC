@@ -1,11 +1,16 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import { useEffect, useState, useRef } from 'react';
+import MapView, { Marker } from 'react-native-maps'
 import { StyleSheet, View } from 'react-native';
 
-export default function Locais() {
+
+export default function Map() {
+
     return (
         <View style={styles.container}>
+
             <MapView style={styles.map} />
+
         </View>
     );
 }

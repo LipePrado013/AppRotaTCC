@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import TabRoutes from "./Tab.Routes";
 import { Entypo, FontAwesome5 } from '@expo/vector-icons';
-import Locais from "../pages/Locais";
+import Map from "../pages/Map";
+import Locais from "../pages/Local";
 import Login from "../pages/Login";
 import Cadastro from "../pages/Cadastro";
 
@@ -11,6 +12,7 @@ const Drawer = createDrawerNavigator()
 export default function DrawerRoutes() {
     return (
         <Drawer.Navigator screenOptions={{
+            // headerShown: false,
             title: '',
             headerTintColor: '#fff',
             drawerActiveTintColor: '#16FA9F',
@@ -21,11 +23,10 @@ export default function DrawerRoutes() {
             },
             headerStyle: {
                 backgroundColor: "#121212",
-                innerWidth: 0
             }
         }}>
             <Drawer.Screen
-                name='Home'
+                name='home'
                 component={TabRoutes}
                 options={{
 
@@ -36,10 +37,20 @@ export default function DrawerRoutes() {
 
             <Drawer.Screen
                 name='mapa'
-                component={Locais}
+                component={Map}
                 options={{
                     drawerLabel: 'Mapa',
                     drawerIcon: ({ color, size }) => <FontAwesome5 name="map-marked-alt" size={size} color={color} />
+                }}
+            />
+
+            <Drawer.Screen
+                name='locais'
+                component={Locais}
+                options={{
+                    drawerLabel: 'Locais',
+                    drawerIcon: ({ color, size }) => <Entypo name="location-pin" size={size} color={color} />
+
                 }}
             />
             <Drawer.Screen

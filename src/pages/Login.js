@@ -2,10 +2,16 @@ import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "reac
 import img from '../assets/img/logo.png'
 import { useState } from "react";
 
-export default function Login() {
+export default function Login({ navigation }) {
 
-    // const [email, setEmail] = useState(null)
-    // const [senha, setSenha] = useState(null)
+
+    const [email, setEmail] = useState(null)
+    const [senha, setSenha] = useState(null)
+    console.log(
+        'email ' + email,
+        'senha ' + senha,
+    )
+
     return (
         <>
             <View style={styles.container}>
@@ -18,12 +24,12 @@ export default function Login() {
                     onChangeText={value => setSenha(value)}
                     secureTextEntry={true} placeholder="Senha" />
 
-                <TouchableOpacity style={styles.btnLogar}>
+                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('home')}>
                     <Text style={styles.textBTN}>
                         Logar
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btncadastar} >
+                <TouchableOpacity style={styles.btncadastar} onPress={() => navigation.navigate('cadastrar')}>
                     <Text style={styles.textBTN}>
                         Cadastar-se
                     </Text>
