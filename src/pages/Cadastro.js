@@ -39,9 +39,18 @@ export default function Cadastro({ navigation }) {
                     onChangeText={value => setConfirmaSenha(value)}
                     secureTextEntry={true} placeholder="Confirma senha" />
 
-                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('login')}>
+                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('home')}>
                     <Text style={styles.textBTN}>
                         Cadastar-se
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{
+
+                    padding: 10
+                }} onPress={() => navigation.navigate('login')}>
+                    <Text style={{ color: '#FFF', fontSize: 17 }}>
+                        Ja tenho conta
                     </Text>
                 </TouchableOpacity>
 

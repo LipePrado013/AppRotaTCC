@@ -33,9 +33,7 @@ export default function TabRoutes() {
 
                 }
             }}>
-                {/* <Screen name='login' component=0{Login} /> */}
-
-                <Tab.Screen name='home2' component={Home} options={{
+                <Tab.Screen name='home' component={Home} options={{
                     headerShown: false /*, tabBarBadge: 6 [balão indicador ]*/, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <AntDesign name="home" size={size} color={color} />
@@ -44,6 +42,7 @@ export default function TabRoutes() {
                         return <AntDesign name="home" size={size} color={color} />
                     }
                 }} />
+
                 <Tab.Screen name='pesquisa' component={Home} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
@@ -53,7 +52,8 @@ export default function TabRoutes() {
                         return <Foundation name="magnifying-glass" size={size} color={color} />
                     }
                 }} />
-                <Tab.Screen name='Maps' component={Map} options={{
+
+                <Tab.Screen name='maps' component={Map} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />

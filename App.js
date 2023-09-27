@@ -1,14 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 
-import DrawerRoutes from './src/routes/Drawer.Routes';
-import { StatusBar } from 'expo-status-bar';
+import Routes from './src/routes/Stack.Routes';
+
 export default function App() {
   return (
-
-    <NavigationContainer>
-      <DrawerRoutes />
-      <StatusBar style='light' />
-    </NavigationContainer>
+    <>
+      <Routes />
+    </>
 
   );
 }

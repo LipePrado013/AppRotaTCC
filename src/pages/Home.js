@@ -4,6 +4,7 @@ import museupesca from '../assets/img/museupesca.png'
 import museucafe from '../assets/img/museu-do-cafe.png'
 import aquario from '../assets/img/Aquario.png'
 import quebramar from '../assets/img/quebraMar.png'
+import { StatusBar } from 'expo-status-bar';
 
 export const cards2 = [
     {// deacricao limite de 128 caracteres
@@ -78,6 +79,9 @@ export default function Home({ navigation }) {
 
     return (
         <>
+            <StatusBar style="dark" />
+
+
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View>
                     <Text style={{
@@ -105,6 +109,7 @@ export default function Home({ navigation }) {
                         } />
 
                     </View>
+
                     <View >
                         <Text style={{
                             fontSize: 25,
