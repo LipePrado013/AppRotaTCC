@@ -4,6 +4,7 @@ import museupesca from '../assets/img/museupesca.png'
 import museucafe from '../assets/img/museu-do-cafe.png'
 import aquario from '../assets/img/Aquario.png'
 import quebramar from '../assets/img/quebraMar.png'
+import Recomendados from "../components/recomenda"
 import { StatusBar } from 'expo-status-bar';
 
 export const cards2 = [
@@ -32,7 +33,7 @@ export const cards2 = [
 
 ]
 
-const cards = [
+export const cards = [
     {
         id: 1,
         image: museupesca,
@@ -99,10 +100,27 @@ export default function Home({ navigation }) {
                                 height: 150,
                                 marginTop: 10,
                             }} onPress={() => navigation.navigate('locais', { item: item })}>
-                                <Image style={styles.img} source={item.image} />
-                                <View style={styles.topText}>
-                                    <Text style={styles.h2}>{item.titulo}</Text>
-                                    <Text style={styles.p2}>{item.previa}</Text>
+                                <Image source={item.image} style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                }} />
+                                <View style={{
+                                    position: 'absolute',
+                                    display: 'flex',
+                                    justifyContent: 'flex-end',
+
+                                    width: '100%',
+                                    height: '100%',
+                                    padding: 10,
+                                    backgroundColor: '#000000ae'
+                                }}>
+                                    <Text style={{
+                                        color: '#FFF',
+                                        fontSize: 25,
+                                        fontWeight: 'bold',
+                                    }}>{item.titulo}</Text>
+                                    <Text style={{ color: '#FFF', }}>{item.previa}</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -129,10 +147,27 @@ export default function Home({ navigation }) {
                                 overflow: 'hidden',
 
                             }} onPress={() => navigation.navigate('locais', { item: item })}>
-                                <Image source={item.image} style={styles.imgcard} />
-                                <View style={styles.topText}>
-                                    <Text style={styles.h2}>{item.titulo}</Text>
-                                    <Text style={styles.p2}>{item.previa}</Text>
+                                <Image source={item.image} style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                }} />
+                                <View style={{
+                                    position: 'absolute',
+                                    display: 'flex',
+                                    justifyContent: 'flex-end',
+
+                                    width: '100%',
+                                    height: '100%',
+                                    padding: 10,
+                                    backgroundColor: '#000000ae'
+                                }}>
+                                    <Text style={{
+                                        color: '#FFF',
+                                        fontSize: 25,
+                                        fontWeight: 'bold',
+                                    }}>{item.titulo}</Text>
+                                    <Text style={{ color: '#FFF', }}>{item.previa}</Text>
                                 </View>
                             </TouchableOpacity>
                         ))}
@@ -198,24 +233,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 150,
     },
-    topText: {
-        position: 'absolute',
-        display: 'flex',
-        justifyContent: 'flex-end',
 
-        width: '100%',
-        height: '100%',
-        padding: 10,
-        backgroundColor: '#000000ae'
-    },
-    h2: {
-        color: '#FFF',
-        fontSize: 25,
-        fontWeight: 'bold',
-    },
-    p2: {
-        color: '#FFF',
-    },
     img: {
         width: '100%',
         height: '100%'
@@ -244,9 +262,5 @@ const styles = StyleSheet.create({
     cards: {
 
     },
-    imgcard: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-    },
+
 });

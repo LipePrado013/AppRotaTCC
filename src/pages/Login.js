@@ -11,21 +11,21 @@ export default function Login({ navigation }) {
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
 
-    const henderLogin = () => {
-        createUserWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
-                console.log(user)
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-                console.log(errorMessage)
-            });
-    }
+    // const henderLogin = () => {
+    //     createUserWithEmailAndPassword(auth, email, senha)
+    //         .then((userCredential) => {
+    //             // Signed in 
+    //             const user = userCredential.user;
+    //             // ...
+    //             console.log(user)
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             // ..
+    //             console.log(errorMessage)
+    //         });
+    // }
 
     return (
         <>
