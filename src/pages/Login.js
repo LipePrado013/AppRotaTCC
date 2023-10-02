@@ -5,11 +5,15 @@ import img from '../assets/img/logo.png'
 import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 
+
+
+
 export default function Login({ navigation }) {
 
 
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
+    console.log(email)
 
     const henderLogin = () => {
         createUserWithEmailAndPassword(auth, email, senha)

@@ -9,6 +9,7 @@ import {
 
 import Home from "../pages/Home";
 import Map from "../pages/Map";
+import Pesquisa from "../pages/Pesquisa";
 
 const Tab = createBottomTabNavigator();
 
@@ -38,17 +39,15 @@ export default function TabRoutes() {
                         if (focused) {
                             return <AntDesign name="home" size={size} color={color} />
                         }
-
                         return <AntDesign name="home" size={size} color={color} />
                     }
                 }} />
 
-                <Tab.Screen name='pesquisa' component={Home} options={{
+                <Tab.Screen name='pesquisa' component={Pesquisa} options={{
                     headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                         if (focused) {
                             return <Foundation name="magnifying-glass" size={size} color={color} />
                         }
-
                         return <Foundation name="magnifying-glass" size={size} color={color} />
                     }
                 }} />
@@ -58,7 +57,6 @@ export default function TabRoutes() {
                         if (focused) {
                             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
                         }
-
                         return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
                     }
                 }} />

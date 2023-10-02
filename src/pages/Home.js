@@ -1,5 +1,6 @@
 import { FlatList, Image, ScrollView, Text, TouchableOpacity, View, StyleSheet } from "react-native"
 
+import { FontAwesome5 } from '@expo/vector-icons';
 import museupesca from '../assets/img/museupesca.png'
 import museucafe from '../assets/img/museu-do-cafe.png'
 import aquario from '../assets/img/Aquario.png'
@@ -77,18 +78,33 @@ const cards = [
 // onPress={() => navigation.navigate('login')} 
 export default function Home({ navigation }) {
 
+
     return (
         <>
             <StatusBar style="dark" />
 
 
-            <ScrollView showsVerticalScrollIndicator={false} >
-                <View>
+            <ScrollView showsVerticalScrollIndicator={false} style={{
+                marginTop: 30,
+            }}>
+                <View style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingStart: 10,
+                    paddingEnd: 20
+                }}>
                     <Text style={{
                         fontSize: 25,
                         fontWeight: 'bold',
-                        padding: 10,
                     }}> Recomendados </Text>
+
+                    <TouchableOpacity style={{ padding: 5, display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4 }} onPress={() => navigation.navigate('login')}>
+
+                        <Text>Olá, Cleitinho</Text>
+                        <FontAwesome5 name="user-circle" size={30} color="black" />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.container}>{/*container */}
                     <View style={styles.conteudo}>
@@ -105,9 +121,7 @@ export default function Home({ navigation }) {
                                     <Text style={styles.p2}>{item.previa}</Text>
                                 </View>
                             </TouchableOpacity>
-
                         } />
-
                     </View>
 
                     <View >
@@ -118,8 +132,8 @@ export default function Home({ navigation }) {
                         }}> Destaques </Text>
                     </View>
 
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false}  >
-                        {cards.map((item, index) => (
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+                        {cards.map((item) => (
                             <TouchableOpacity style={{
                                 backgroundColor: 'gray',
                                 margin: 10,

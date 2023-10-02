@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Cadastro from '../pages/Cadastro';
 import Local from '../pages/Local';
 import TabRoutes from './Tab.Routes';
+import Map from '../pages/Map';
 
 const Stack = createNativeStackNavigator();
 export default function StackRoutes() {
@@ -18,15 +19,31 @@ export default function StackRoutes() {
 
                 <Stack.Screen
                     name='home'
+                    options={{
+                        headerShown: false,
+                    }}
                     component={TabRoutes}
                 />
 
                 <Stack.Screen
+                    options={{
+                        headerShown: false,
+                    }}
                     name='locais'
                     component={Local}
                 />
+                <Stack.Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name='mapa'
+                    component={Map}
+                />
 
                 <Stack.Screen
+                    options={{
+                        headerShown: false,
+                    }}
                     name='cadastrar'
                     component={Cadastro}
                 />
