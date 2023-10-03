@@ -7,7 +7,7 @@ import aquario from '../assets/img/Aquario.png'
 import quebramar from '../assets/img/quebraMar.png'
 import { StatusBar } from 'expo-status-bar';
 
-export const cards2 = [
+const cards2 = [
     {// deacricao limite de 128 caracteres
         id: 1,
         image: museupesca,
@@ -37,7 +37,7 @@ const cards = [
     {
         id: 1,
         image: museupesca,
-        titulo: 'museu do da pesca',
+        titulo: 'Museu do da pesca',
         previa: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos.',
         descricao: 'Instalado em um casarão de 1908, o  Museu de Pesca, é uma das principais atrações turísticas de Santos e integra o patrimônio histórico-cultural de toda a região. De estilo eclético, o prédio, construído no local do antigo Forte Augusto (século XVIII), abriga importante acervo do ambiente aquático. Dentre as atrações, um esqueleto de baleia com 23m de comprimento, lulas gigantes, Sala da Praia, Ala Lúdica, animais taxidermizados e uma grande coleção de areias de praias do Brasil e do mundo.',
         data: 'inaugurado em 1932',
@@ -48,7 +48,7 @@ const cards = [
     {
         id: 2,
         image: museucafe,
-        titulo: 'museu do café',
+        titulo: 'Museu do café',
         previa: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético.',
         descricao: 'Um lugar que reúne tradição, arquitetura, história, sabores e aromas. Instalado em um prédio de estilo eclético, com 6 mil m² e mais de 200 portas e janelas, o Museu do Café, inaugurado em 1998, é muito mais do que um local turístico que exalta o principal produto brasileiro de exportação no final do século 19. É uma experiência de variadas sensações, que vão do início do cultivo do grão até a consolidação do café como um dos símbolos nacionais. Exposições permanente e temporárias, obras de arte, mobiliário de época, loja temática e cafeteria que serve os melhores grãos café - e até o mais caro e raro do país - são algumas de suas muitas atrações.',
         data: 'inaugurado em 1998',
@@ -76,8 +76,8 @@ const cards = [
 ]
 
 // onPress={() => navigation.navigate('login')} 
-export default function Home({ navigation }) {
-
+export default function Home({ navigation, route }) {
+    // const { email } = route.params
 
     return (
         <>
@@ -102,7 +102,7 @@ export default function Home({ navigation }) {
 
                     <TouchableOpacity style={{ padding: 5, display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4 }} onPress={() => navigation.navigate('login')}>
 
-                        <Text>Olá, Cleitinho</Text>
+                        <Text>Olá, </Text>
                         <FontAwesome5 name="user-circle" size={30} color="black" />
                     </TouchableOpacity>
                 </View>

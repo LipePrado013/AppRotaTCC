@@ -13,7 +13,9 @@ export default function Login({ navigation }) {
 
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
-    console.log(email)
+
+
+
 
     const henderLogin = () => {
         createUserWithEmailAndPassword(auth, email, senha)
