@@ -4,11 +4,11 @@ import { useState } from "react";
 
 export default function Cadastro({ navigation }) {
 
-    const [nome, setNome] = useState(null)
-    const [SobreNome, setSobreNome] = useState(null)
-    const [email, setEmail] = useState(null)
-    const [senha, setSenha] = useState(null)
-    const [ConfirmaSenha, setConfirmaSenha] = useState(null)
+    const [nome, setNome] = useState()
+    const [SobreNome, setSobreNome] = useState()
+    const [email, setEmail] = useState()
+    const [senha, setSenha] = useState()
+    const [ConfirmaSenha, setConfirmaSenha] = useState()
 
     // console.log(
     //     'nome ' + nome,
@@ -39,7 +39,7 @@ export default function Cadastro({ navigation }) {
                     onChangeText={value => setConfirmaSenha(value)}
                     secureTextEntry={true} placeholder="Confirma senha" />
 
-                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('home')}>
+                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('home', { nome: nome })}>
                     <Text style={styles.textBTN}>
                         Cadastar-se
                     </Text>

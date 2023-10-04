@@ -67,7 +67,7 @@ const cards = [
     {
         id: 4,
         image: quebramar,
-        titulo: 'Quabre Mar',
+        titulo: 'Quebra Mar',
         previa: 'Com 42.766 m², o Parque Roberto Mário Santini ocupa a plataforma do emissário submarino e avança 400m mar adentro.',
         descricao: 'No parque, estão instalados Espaço Criança, pista profissional de skate com 1.100 m², ciclovia, mesas ao ar livre para jogos, gibiteca, arquibancada com capacidade para 600 pessoas junto ao quebra-mar, torre de observação para jurados em competições de surf, e áreas de convivência e de contemplação.',
         data: 'inaugurado em 2009',
@@ -77,7 +77,8 @@ const cards = [
 
 // onPress={() => navigation.navigate('login')} 
 export default function Home({ navigation, route }) {
-    // const { email } = route.params
+    // const nome = route.params
+
 
     return (
         <>
@@ -100,9 +101,17 @@ export default function Home({ navigation, route }) {
                         fontWeight: 'bold',
                     }}> Recomendados </Text>
 
-                    <TouchableOpacity style={{ padding: 5, display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4 }} onPress={() => navigation.navigate('login')}>
+                    <TouchableOpacity style={{
+                        padding: 5,
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 4
+                    }}
+                        onPress={() => navigation.navigate('perfil')}
+                    >
 
-                        <Text>Olá, </Text>
+                        <Text>Olá, Calebe</Text>
                         <FontAwesome5 name="user-circle" size={30} color="black" />
                     </TouchableOpacity>
                 </View>

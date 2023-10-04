@@ -5,6 +5,7 @@ import Cadastro from '../pages/Cadastro';
 import Local from '../pages/Local';
 import TabRoutes from './Tab.Routes';
 import Map from '../pages/Map';
+import Perfil from '../pages/Perfil';
 
 const Stack = createNativeStackNavigator();
 export default function StackRoutes() {
@@ -23,6 +24,13 @@ export default function StackRoutes() {
                         headerShown: false,
                     }}
                     component={TabRoutes}
+                />
+                <Stack.Screen
+                    name='perfil'
+                    options={{
+                        headerShown: false,
+                    }}
+                    component={Perfil}
                 />
 
                 <Stack.Screen
