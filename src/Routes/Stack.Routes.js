@@ -6,6 +6,7 @@ import Local from '../pages/Local';
 import TabRoutes from './Tab.Routes';
 import Map from '../pages/Map';
 import Perfil from '../pages/Perfil';
+import Apiteste from '../pages/apiTeste';
 
 const Stack = createNativeStackNavigator();
 export default function StackRoutes() {
@@ -54,6 +55,14 @@ export default function StackRoutes() {
                     }}
                     name='cadastrar'
                     component={Cadastro}
+                />
+
+                <Stack.Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name='apiteste'
+                    component={Apiteste}
                 />
             </Stack.Navigator>
         </NavigationContainer>

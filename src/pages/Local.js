@@ -41,14 +41,7 @@ export default function Locais({ navigation, route }) {
                         ) : (
                             < AntDesign name="heart" size={25} color="red" />
                         )}
-
-
-
-
-
                     </TouchableOpacity>
-
-
                 </View>
                 <View style={{
 
@@ -95,6 +88,67 @@ export default function Locais({ navigation, route }) {
                         color: '#ADADAD',
                         fontWeight: '500'
                     }}>{item.data} </Text>
+
+
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+
+                        <TouchableOpacity style={{
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            flexDirection: 'row',
+                            gap: 20,
+
+                        }} >
+                            <Image source={item.image1} style={{
+                                width: 100,
+                                height: 100
+                            }} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            flexDirection: 'row',
+                            gap: 20,
+
+                        }} >
+                            <Image source={item.image2} style={{
+                                width: 100,
+                                height: 100
+                            }} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            flexDirection: 'row',
+                            gap: 20,
+
+                        }} >
+                            <Image source={item.image3} style={{
+                                width: 100,
+                                height: 100
+                            }} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            flexDirection: 'row',
+                            gap: 20,
+
+                        }} >
+                            <Image source={item.image4} style={{
+                                width: 100,
+                                height: 100
+                            }} />
+                        </TouchableOpacity>
+
+
+                    </ScrollView>
+
+
                     <Text style={{
                         fontWeight: '700',
                         fontSize: 17,
@@ -126,7 +180,7 @@ export default function Locais({ navigation, route }) {
                         paddingTop: 15,
                         borderRadius: 10,
                         backgroundColor: '#5386C9'
-                    }} onPress={() => navigation.navigate('mapa')}>
+                    }} onPress={() => navigation.navigate('apiteste')}>
                         <Text style={{
                             color: '#fff',
                             fontWeight: '600'

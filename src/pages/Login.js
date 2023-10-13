@@ -1,38 +1,15 @@
-import { auth } from "../services/firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native"
 import img from '../assets/img/logo.png'
 import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 
 
-
-
 export default function Login({ navigation }) {
-
 
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
 
-
-
-
-    const henderLogin = () => {
-        createUserWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
-                console.log(user)
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-                console.log(errorMessage)
-            });
-    }
-
+    // console.log(email)
     return (
         <>
             <StatusBar style="light" />
@@ -56,6 +33,7 @@ export default function Login({ navigation }) {
                         Cadastar-se
                     </Text>
                 </TouchableOpacity>
+
             </View>
         </>
     )
