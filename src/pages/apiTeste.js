@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { Image } from "react-native";
 import { View } from "react-native";
@@ -6,34 +7,22 @@ import { Text } from "react-native";
 
 export default function Apiteste() {
 
-    const [locais, setLocais] = useState([]);
+  const route = useRoute()
+  const local = route.params.local
 
-    function data() {
-        fetch('http://192.168.15.14:80/API-Rota/')
-            .then((Response) => Response.json())
-            .then(json => setLocais(json))
-            .catch(err => console.error(err))
-    }
 
-    useEffect(() => {
-        data()
-    }, []);
+  return (
+    <>
 
-    return (
-        <>
 
-            {
-                locais.map(item => (
-                    <View>
-                        <Image style={{
-                            width: 100,
-                            height: 100,
-                        }} source={{ uri: item.img_local }} />
-                        <Text>{item.nm_local}</Text>
-                    </View>
-                ))
-            }
-            <Text>oioioaiosdiadoaisoaido</Text>
-        </>
-    )
+      <Text style={{
+        fontWeight: '700',
+        fontSize: 17,
+        paddingTop: 30,
+        textAlign: 'justify'
+      }}>{local.lat_local}</Text>
+
+
+    </>
+  )
 }

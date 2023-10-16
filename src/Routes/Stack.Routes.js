@@ -10,61 +10,61 @@ import Apiteste from '../pages/apiTeste';
 
 const Stack = createNativeStackNavigator();
 export default function StackRoutes() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name='login'
-                    options={{ headerShown: false }}
-                    component={Login}
-                />
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='login'
+          options={{ headerShown: false }}
+          component={Login}
+        />
 
-                <Stack.Screen
-                    name='home'
-                    options={{
-                        headerShown: false,
-                    }}
-                    component={TabRoutes}
-                />
-                <Stack.Screen
-                    name='perfil'
-                    options={{
-                        headerShown: false,
-                    }}
-                    component={Perfil}
-                />
+        <Stack.Screen
+          name='main'
+          options={{
+            headerShown: false,
+          }}
+          component={TabRoutes}
+        />
+        <Stack.Screen
+          name='perfil'
+          options={{
+            headerShown: false,
+          }}
+          component={Perfil}
+        />
 
-                <Stack.Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name='locais'
-                    component={Local}
-                />
-                <Stack.Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name='mapa'
-                    component={Map}
-                />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name='locais'
+          component={Local}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name='mapa'
+          component={Map}
+        />
 
-                <Stack.Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name='cadastrar'
-                    component={Cadastro}
-                />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name='cadastrar'
+          component={Cadastro}
+        />
 
-                <Stack.Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name='apiteste'
-                    component={Apiteste}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name='apiteste'
+          component={Apiteste}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }

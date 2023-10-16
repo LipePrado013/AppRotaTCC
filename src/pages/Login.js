@@ -2,94 +2,96 @@ import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "reac
 import img from '../assets/img/logo.png'
 import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 
-export default function Login({ navigation }) {
+export default function Login() {
+  // const route = useRoute();
+  const navigation = useNavigation()
 
-    const [email, setEmail] = useState()
-    const [senha, setSenha] = useState()
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
 
-    // console.log(email)
-    return (
-        <>
-            <StatusBar style="light" />
-            <View style={styles.container}>
-                <Image style={styles.img} source={img} />
+  return (
+    <>
+      <StatusBar style="light" />
+      <View style={styles.container}>
+        <Image style={styles.img} source={img} />
 
-                <TextInput style={styles.input}
-                    onChangeText={value => setEmail(value)}
-                    placeholder="E-mail" />
-                <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
-                    secureTextEntry={true} placeholder="Senha" />
+        <TextInput style={styles.input}
+          onChangeText={value => setEmail(value)}
+          placeholder="E-mail" />
+        <TextInput style={styles.input}
+          onChangeText={value => setSenha(value)}
+          secureTextEntry={true} placeholder="Senha" />
 
-                <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('home')}>
-                    <Text style={styles.textBTN}>
-                        Logar
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btncadastar} onPress={() => navigation.navigate('cadastrar')}>
-                    <Text style={styles.textBTN}>
-                        Cadastar-se
-                    </Text>
-                </TouchableOpacity>
+        <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('main', { screen: 'home', params: { nome: email } })}>
+          <Text style={styles.textBTN}>
+            Logar
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btncadastar} onPress={() => navigation.navigate('cadastrar')}>
+          <Text style={styles.textBTN}>
+            Cadastar-se
+          </Text>
+        </TouchableOpacity>
 
-            </View>
-        </>
-    )
+      </View>
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#303030',
-        gap: 20,
-    },
-    img: {
-        width: 120,
-        height: 200
-    },
-    imgLogo: {
-        width: 100
-    },
-    input: {
-        borderWidth: 1,
-        backgroundColor: "#fff",
-        padding: 2,
-        borderRadius: 10,
-        width: 300,
-        height: 40,
-        borderWidth: 0,
-        fontSize: 20,
-    },
-    btnLogar: {
-        padding: 10,
-        width: 120,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#16FA9F',
-        borderRadius: 10,
-        borderWidth: 0,
-        color: '#fff'
-    },
-    btncadastar: {
-        padding: 10,
-        width: 120,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#096641',
-        borderRadius: 10,
-        borderWidth: 0,
-        color: '#fff'
-    },
-    textBTN: {
-        fontSize: 17,
-        fontWeight: 'bold',
-    },
+  container: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#303030',
+    gap: 20,
+  },
+  img: {
+    width: 120,
+    height: 200
+  },
+  imgLogo: {
+    width: 100
+  },
+  input: {
+    borderWidth: 1,
+    backgroundColor: "#fff",
+    padding: 2,
+    borderRadius: 10,
+    width: 300,
+    height: 40,
+    borderWidth: 0,
+    fontSize: 20,
+  },
+  btnLogar: {
+    padding: 10,
+    width: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#16FA9F',
+    borderRadius: 10,
+    borderWidth: 0,
+    color: '#fff'
+  },
+  btncadastar: {
+    padding: 10,
+    width: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#096641',
+    borderRadius: 10,
+    borderWidth: 0,
+    color: '#fff'
+  },
+  textBTN: {
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
 });

@@ -1,77 +1,91 @@
 import React from 'react';
 import {
-    requestForegroundPermissionsAsync,
-    getCurrentPositionAsync,
-    LocationObject,
-    watchPositionAsync,
-    LocationAccuracy
+  requestForegroundPermissionsAsync,
+  getCurrentPositionAsync,
+  LocationObject,
+  watchPositionAsync,
+  LocationAccuracy
 } from 'expo-location'
 import { useEffect, useState, useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps'
 import { StyleSheet, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
 
 export default function Map() {
+  // const route = useRoute()
+  // const local = route.params.local
 
-    const [location, setLocation] = useState(null);
+  // const lat = local.lat_local
+  // const lon = local.lon_local
 
-    async function requestLocationPermissions() {
-        const { granted } = await requestForegroundPermissionsAsync();
+  const [location, setLocation] = useState(null);
 
-        if (granted) {
-            const currentPosition = await getCurrentPositionAsync();
-            setLocation(currentPosition);
-            console.log('local atual ', currentPosition)
-        }
+  async function requestLocationPermissions() {
+    const { granted } = await requestForegroundPermissionsAsync();
+
+    if (granted) {
+      const currentPosition = await getCurrentPositionAsync();
+      setLocation(currentPosition);
+      // console.log('local atual ', currentPosition)
     }
+  }
 
-    useEffect(() => {
-        requestLocationPermissions();
-    }, [])
+  useEffect(() => {
+    requestLocationPermissions();
+  }, [])
 
-    useEffect(() => {
-        watchPositionAsync({
-            accuracy: LocationAccuracy.Highest,
-            timeInterval: 1000,
-            distanceInterval: 1
-        }, (response) => {
-            // console.log('nova localização', response)
-            setLocation(response)
-        })
-    }, [])
+  useEffect(() => {
+    watchPositionAsync({
+      accuracy: LocationAccuracy.Highest,
+      timeInterval: 1000,
+      distanceInterval: 1
+    }, (response) => {
+      // console.log('nova localização', response)
+      setLocation(response)
+    })
+  }, [])
 
-    return (
-        <View style={styles.container}>
+  return (
+    <View style={styles.container}>
 
-            {
-                location &&
-                <MapView style={styles.map}
-                    initialRegion={{
-                        latitude: location.coords.latitude,
-                        longitude: location.coords.longitude,
-                        latitudeDelta: 0.005,
-                        longitudeDelta: 0.005
-                    }}
-                >
-                    <Marker
-                        coordinate={{
-                            latitude: location.coords.latitude,
-                            longitude: location.coords.longitude,
-                        }}
-                    />
-                </MapView>
-            }
+      {
+        location &&
+        <MapView style={styles.map}
+          initialRegion={{
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005
+          }}
+        >
+          <Marker
+            coordinate={{
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+            }}
+          />
+          {/* <Marker
+            coordinate={{
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+            }}
+          /> */}
 
-        </View>
-    );
+
+        </MapView>
+      }
+
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    map: {
-        width: '100%',
-        height: '100%',
-    },
+  container: {
+    flex: 1,
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
 });
