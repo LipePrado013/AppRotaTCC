@@ -10,11 +10,14 @@ import {
 import Home from "../pages/Home";
 import Map from "../pages/Map";
 import Pesquisa from "../pages/Pesquisa";
+import { useRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 
 export default function TabRoutes() {
+  const route = useRoute()
+
   return (
 
     <>
@@ -52,6 +55,7 @@ export default function TabRoutes() {
         }} />
 
         <Tab.Screen name='maps' component={Map} options={{
+
           headerShown: false, tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="map-marked-alt" size={size} color={color} />

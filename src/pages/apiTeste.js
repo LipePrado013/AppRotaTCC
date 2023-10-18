@@ -17,10 +17,20 @@ export default function Apiteste() {
 
       <Text style={{
         fontWeight: '700',
-        fontSize: 17,
-        paddingTop: 30,
+        fontSize: 30,
+        paddingTop: 50,
         textAlign: 'justify'
-      }}>{local.lat_local}</Text>
+      }}>{local.nm_local}</Text>
+      <Text style={{
+        fontWeight: '700',
+        fontSize: 17,
+        textAlign: 'justify'
+      }}>Latitude: {local.lat_local}</Text>
+      <Text style={{
+        fontWeight: '700',
+        fontSize: 17,
+        textAlign: 'justify'
+      }}>Longitude: {local.lon_local}</Text>
 
 
     </>
