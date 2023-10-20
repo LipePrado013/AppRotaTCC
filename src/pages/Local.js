@@ -14,12 +14,86 @@ export default function Locais() {
   console.log(local)
   const [heart, setHeart] = useState(true);
 
+  const [foto, setFoto] = useState([]);
+
+
   return (
     <>
+      {foto ? (null) : (
+        <>
+          <TouchableOpacity style={{
+            position: 'absolute',
+            top: 40,
+            zIndex: 20,
+            right: 20
+          }} onPress={() => setFoto(!foto)}>
+            <AntDesign name="closecircle" size={30} color="#FFF" />
+          </TouchableOpacity>
 
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}
+            style={{
+              position: 'absolute',
+              zIndex: 10,
+              paddingTop: 270,
+              backgroundColor: '#0000009d',
+              width: '100%',
+              height: '100%',
+            }} >
+
+            {local.img_local1 ? (<TouchableOpacity key={local.id_local} style={{
+              margin: 10,
+              borderRadius: 20,
+              gap: 20,
+            }} >
+              <Image source={{ uri: local.img_local1 }} style={{
+                width: 350,
+                height: 350
+              }} />
+
+            </TouchableOpacity>) : null}
+            {local.img_local2 ? (<TouchableOpacity style={{
+              margin: 10,
+              borderRadius: 20,
+              gap: 20,
+            }} >
+
+              <Image source={{ uri: local.img_local2 }} style={{
+                width: 350,
+                height: 350
+              }} />
+
+            </TouchableOpacity>) : null}
+            {local.img_local3 ? (<TouchableOpacity style={{
+              margin: 10,
+              borderRadius: 20,
+              gap: 20,
+            }} >
+
+              <Image source={{ uri: local.img_local3 }} style={{
+                width: 350,
+                height: 350
+              }} />
+            </TouchableOpacity>) : null}
+
+            {local.img_local4 ? (<TouchableOpacity style={{
+              margin: 10,
+              borderRadius: 20,
+              gap: 20,
+            }} >
+
+              <Image source={{ uri: local.img_local4 }} style={{
+                width: 350,
+                height: 350
+              }} />
+            </TouchableOpacity>) : null}
+
+          </ScrollView>
+        </>
+      )}
       <ScrollView showsVerticalScrollIndicator={false} style={{
         marginTop: 30,
       }}>
+
         <View style={{
           backgroundColor: '#fff',
           borderRadius: 8,
@@ -82,54 +156,65 @@ export default function Locais() {
             textAlign: 'justify'
           }}>{local.tx_previa} </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} >
-            <TouchableOpacity style={{
-              margin: 10,
-              borderRadius: 20,
-              overflow: 'hidden',
-              flexDirection: 'row',
-              gap: 20,
-            }} >
-              <Image source={{ uri: local.img_local1 }} style={{
-                width: 100,
-                height: 100
-              }} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{
-              margin: 10,
-              borderRadius: 20,
-              overflow: 'hidden',
-              flexDirection: 'row',
-              gap: 20,
-            }} >
-              <Image source={{ uri: local.img_local2 }} style={{
-                width: 100,
-                height: 100
-              }} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{
-              margin: 10,
-              borderRadius: 20,
-              overflow: 'hidden',
-              flexDirection: 'row',
-              gap: 20,
-            }} >
-              <Image source={{ uri: local.img_local3 }} style={{
-                width: 100,
-                height: 100
-              }} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{
-              margin: 10,
-              borderRadius: 20,
-              overflow: 'hidden',
-              flexDirection: 'row',
-              gap: 20,
-            }} >
-              <Image source={{ uri: local.img_local4 }} style={{
-                width: 100,
-                height: 100
-              }} />
-            </TouchableOpacity>
+
+            {local.img_local1 != '' ?
+              <TouchableOpacity style={{
+                margin: 10,
+                borderRadius: 20,
+                overflow: 'hidden',
+                flexDirection: 'row',
+                gap: 20,
+              }}
+                onPress={() => setFoto(!foto)}>
+                <Image source={{ uri: local.img_local1 }} style={{
+                  width: 100,
+                  height: 100
+                }} />
+              </TouchableOpacity> : null}
+
+            {local.img_local2 != '' ?
+              <TouchableOpacity style={{
+                margin: 10,
+                borderRadius: 20,
+                overflow: 'hidden',
+                flexDirection: 'row',
+                gap: 20,
+              }} onPress={() => setFoto(!foto)}>
+                <Image source={{ uri: local.img_local2 }} style={{
+                  width: 100,
+                  height: 100
+                }} />
+              </TouchableOpacity> : null}
+
+            {local.img_local3 != '' ?
+              <TouchableOpacity style={{
+                margin: 10,
+                borderRadius: 20,
+                overflow: 'hidden',
+                flexDirection: 'row',
+                gap: 20,
+              }} onPress={() => setFoto(!foto)}>
+                <Image source={{ uri: local.img_local3 }} style={{
+                  width: 100,
+                  height: 100
+                }} />
+              </TouchableOpacity>
+              : null}
+
+            {local.img_local4 != '' ?
+              <TouchableOpacity style={{
+                margin: 10,
+                borderRadius: 20,
+                overflow: 'hidden',
+                flexDirection: 'row',
+                gap: 20,
+              }} onPress={() => setFoto(!foto)}>
+                <Image source={{ uri: local.img_local4 }} style={{
+                  width: 100,
+                  height: 100
+                }} />
+              </TouchableOpacity> : null}
+
           </ScrollView>
           <Text style={{
             fontWeight: '700',
@@ -167,7 +252,7 @@ export default function Locais() {
           </TouchableOpacity>
 
 
-          <TouchableOpacity style={{
+          {/* <TouchableOpacity style={{
             paddingLeft: 35,
             paddingRight: 35,
             paddingBottom: 15,
@@ -179,7 +264,7 @@ export default function Locais() {
               color: '#fff',
               fontWeight: '600'
             }}>Abrir teste</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
 
         </View>

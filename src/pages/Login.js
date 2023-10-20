@@ -25,7 +25,10 @@ export default function Login() {
           onChangeText={value => setSenha(value)}
           secureTextEntry={true} placeholder="Senha" />
 
-        <TouchableOpacity style={styles.btnLogar} onPress={() => navigation.navigate('main', { screen: 'home', params: { nome: email } })}>
+        <TouchableOpacity style={styles.btnLogar}
+          onPress={() => navigation.navigate(
+            'main', { screen: 'home', params: { nome: email } },
+          )}>
           <Text style={styles.textBTN}>
             Logar
           </Text>

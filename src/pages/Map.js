@@ -51,24 +51,23 @@ export default function Map() {
           initialRegion={{
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005
+            latitudeDelta: 0.055,
+            longitudeDelta: 0.055
           }}
           showsUserLocation={true}
           loadingEnabled={true}
         >
-
-
-
           <Marker
             coordinate={{
               latitude: lat,
               longitude: lon,
+
             }}
           >
             <Image
               source={{ uri: local.img_local }}
               style={{
+                borderWidth: 2,
                 borderRadius: 50,
                 width: 35,
                 height: 35

@@ -10,18 +10,17 @@ import {
 import Home from "../pages/Home";
 import Map from "../pages/Map";
 import Pesquisa from "../pages/Pesquisa";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 
 export default function TabRoutes() {
-  const route = useRoute()
+
+  const navigation = useNavigation()
 
   return (
-
     <>
-
       <Tab.Navigator screenOptions={{
         tabBarActiveTintColor: "#16FA9F",
         tabBarShowLabel: false,
@@ -44,7 +43,6 @@ export default function TabRoutes() {
             return <AntDesign name="home" size={size} color={color} />
           }
         }} />
-
         <Tab.Screen name='pesquisa' component={Pesquisa} options={{
           headerShown: false, tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
@@ -53,18 +51,14 @@ export default function TabRoutes() {
             return <Foundation name="magnifying-glass" size={size} color={color} />
           }
         }} />
-
-        <Tab.Screen name='maps' component={Map} options={{
-
+        {/* <Tab.Screen name='maps' component={Map} options={{
           headerShown: false, tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
             }
             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
           }
-        }} />
-
-
+        }} /> */}
       </Tab.Navigator >
     </>
   )

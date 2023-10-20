@@ -12,7 +12,7 @@ export default function Perfil() {
 
   const navigation = useNavigation()
 
-
+  console.log(route)
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={{
@@ -64,7 +64,7 @@ export default function Perfil() {
             alignItems: 'center',
           }}>
             <Text style={{ color: '#FFF', fontSize: 20 }}>
-              Calebe
+              Calebe Alves
             </Text>
             <Text style={{ color: '#6E6E6E' }}>
               cidade: São Paulo

@@ -1,9 +1,5 @@
-import { FlatList, Image, ScrollView, Text, TouchableOpacity, View, StyleSheet } from "react-native"
+import { Image, ScrollView, Text, TouchableOpacity, View, StyleSheet } from "react-native"
 import { FontAwesome5 } from '@expo/vector-icons';
-import museupesca from '../assets/img/museupesca.png'
-import museucafe from '../assets/img/museu-do-cafe.png'
-import aquario from '../assets/img/Aquario.png'
-import quebramar from '../assets/img/quebraMar.png'
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
