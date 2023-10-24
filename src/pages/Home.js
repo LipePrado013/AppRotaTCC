@@ -14,7 +14,7 @@ export default function Home() {
   const [destaques, setDestaques] = useState([]);
 
   function data() {
-    fetch('http://192.168.15.10:80/API-Rota/') //mudar o ip da maquina para que a API funcione 
+    fetch('http://192.168.15.13:80/API-Rota/') //mudar o ip da maquina para que a API funcione 
       .then((Response) => Response.json())
       .then(json => {
         setLocais(json.splice(0, 2)); //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
@@ -55,7 +55,7 @@ export default function Home() {
             onPress={() => navigation.navigate('perfil')}
           >
             <Text style={{
-            }}>Olá, {route.params.nome}</Text>
+            }}>Olá, </Text>
             <FontAwesome5 name="user-circle" size={30} color="black" />
           </TouchableOpacity>
         </View>

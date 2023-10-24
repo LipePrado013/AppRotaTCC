@@ -6,6 +6,7 @@ export default function Cadastro({ navigation }) {
 
   const [nome, setNome] = useState()
   const [SobreNome, setSobreNome] = useState()
+  const [Cidade, setCidade] = useState()
   const [email, setEmail] = useState()
   const [senha, setSenha] = useState()
   const [ConfirmaSenha, setConfirmaSenha] = useState()
@@ -29,6 +30,9 @@ export default function Cadastro({ navigation }) {
         <TextInput style={styles.input}
           onChangeText={value => setSobreNome(value)}
           placeholder="Sobrenome" />
+        <TextInput style={styles.input}
+          onChangeText={value => setCidade(value)}
+          placeholder="Cidade" />
         <TextInput style={styles.input}
           onChangeText={value => setEmail(value)}
           placeholder="E-mail" />

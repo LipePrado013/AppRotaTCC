@@ -4,9 +4,10 @@ import Login from '../pages/Login';
 import Cadastro from '../pages/Cadastro';
 import Local from '../pages/Local';
 import TabRoutes from './Tab.Routes';
-import Map from '../pages/Map';
+import MapLocal from '../pages/MapLocal';
 import Perfil from '../pages/Perfil';
 import Apiteste from '../pages/apiTeste';
+import MapGeral from '../pages/MapGeral';
 
 const Stack = createNativeStackNavigator();
 export default function StackRoutes() {
@@ -45,8 +46,15 @@ export default function StackRoutes() {
           options={{
             headerShown: false,
           }}
-          name='mapa'
-          component={Map}
+          name='mapaLocal'
+          component={MapLocal}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name='mapaGeral'
+          component={MapGeral}
         />
 
         <Stack.Screen

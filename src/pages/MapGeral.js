@@ -9,17 +9,31 @@ import {
 import { useEffect, useState, useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps'
 import { Image, StyleSheet, View } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-export default function Map() {
-  const route = useRoute()
-  const local = route.params.local
+export default function MapGeral() {
+  const navigation = useNavigation()
 
-  const lat = parseFloat(local.lat_local)
-  const lon = parseFloat(local.lon_local)
+  // api 
+  const [locais, setLocais] = useState([]);
+  // const [destaques, setDestaques] = useState([]);
 
-  console.log(lat, lon)
+  function data() {
+    fetch('http://192.168.15.13:80/API-Rota/') //mudar o ip da maquina para que a API funcione 
+      .then((Response) => Response.json())
+      .then(json => {
+        setLocais(json) //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
+      })
+      .catch(err => console.error(err))
+  }
+
+  // console.log(locais)
+  useEffect(() => {
+    data()
+  }, []);
+  // api
+
 
   const [location, setLocation] = useState(null);
   async function requestLocationPermissions() {
@@ -32,23 +46,23 @@ export default function Map() {
   useEffect(() => {
     requestLocationPermissions();
   }, [])
-  useEffect(() => {
-    watchPositionAsync({
-      accuracy: LocationAccuracy.Highest,
-      timeInterval: 1000,
-      distanceInterval: 1
-    }, (response) => {
-      // console.log('nova localização', response)
-      setLocation(response)
-    })
-  }, [])
+  // useEffect(() => {
+  //   watchPositionAsync({
+  //     accuracy: LocationAccuracy.Highest,
+  //     timeInterval: 1000,
+  //     distanceInterval: 1
+  //   }, (response) => {
+  //     // console.log('nova localização', response)
+  //     setLocation(response)
+  //   })
+  // }, [])
 
   return (
     <View style={styles.container}>
 
       {location &&
         <MapView style={styles.map}
-          initialRegion={{
+          region={{
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
             latitudeDelta: 0.055,
@@ -57,12 +71,13 @@ export default function Map() {
           showsUserLocation={true}
           loadingEnabled={true}
         >
-          <Marker
+          {locais.map(local => <Marker key={local.id_local}
             coordinate={{
-              latitude: lat,
-              longitude: lon,
+              latitude: parseFloat(local.lat_local),
+              longitude: parseFloat(local.lon_local),
 
             }}
+            onPress={() => navigation.navigate('locais', { local })}
           >
             <Image
               source={{ uri: local.img_local }}
@@ -74,6 +89,7 @@ export default function Map() {
               }}
             />
           </Marker>
+          )}
 
 
         </MapView>
@@ -86,7 +102,7 @@ export default function Map() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10
+    marginTop: 25
   },
   map: {
     width: '100%',

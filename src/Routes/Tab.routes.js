@@ -8,7 +8,7 @@ import {
 } from '@expo/vector-icons';
 
 import Home from "../pages/Home";
-import Map from "../pages/Map";
+import MapGeral from "../pages/MapGeral";
 import Pesquisa from "../pages/Pesquisa";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -51,14 +51,14 @@ export default function TabRoutes() {
             return <Foundation name="magnifying-glass" size={size} color={color} />
           }
         }} />
-        {/* <Tab.Screen name='maps' component={Map} options={{
+        <Tab.Screen name='MapaGeral' component={MapGeral} options={{
           headerShown: false, tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
             }
             return <FontAwesome5 name="map-marked-alt" size={size} color={color} />
           }
-        }} /> */}
+        }} />
       </Tab.Navigator >
     </>
   )

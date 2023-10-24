@@ -35,12 +35,12 @@ export default function Locais() {
               position: 'absolute',
               zIndex: 10,
               paddingTop: 270,
-              backgroundColor: '#0000009d',
+              backgroundColor: '#0000009e',
               width: '100%',
               height: '100%',
             }} >
 
-            {local.img_local1 ? (<TouchableOpacity key={local.id_local} style={{
+            {local.img_local1 ? (<View key={local.id_local} style={{
               margin: 10,
               borderRadius: 20,
               gap: 20,
@@ -50,8 +50,8 @@ export default function Locais() {
                 height: 350
               }} />
 
-            </TouchableOpacity>) : null}
-            {local.img_local2 ? (<TouchableOpacity style={{
+            </View>) : null}
+            {local.img_local2 ? (<View style={{
               margin: 10,
               borderRadius: 20,
               gap: 20,
@@ -62,8 +62,8 @@ export default function Locais() {
                 height: 350
               }} />
 
-            </TouchableOpacity>) : null}
-            {local.img_local3 ? (<TouchableOpacity style={{
+            </View>) : null}
+            {local.img_local3 ? (<View style={{
               margin: 10,
               borderRadius: 20,
               gap: 20,
@@ -73,9 +73,9 @@ export default function Locais() {
                 width: 350,
                 height: 350
               }} />
-            </TouchableOpacity>) : null}
+            </View>) : null}
 
-            {local.img_local4 ? (<TouchableOpacity style={{
+            {local.img_local4 ? (<View style={{
               margin: 10,
               borderRadius: 20,
               gap: 20,
@@ -85,7 +85,7 @@ export default function Locais() {
                 width: 350,
                 height: 350
               }} />
-            </TouchableOpacity>) : null}
+            </View>) : null}
 
           </ScrollView>
         </>
@@ -97,7 +97,7 @@ export default function Locais() {
         <View style={{
           backgroundColor: '#fff',
           borderRadius: 8,
-          paddingHorizontal: 26,
+          paddingHorizontal: 8,
           paddingVertical: 16,
           marginHorizontal: 16,
           marginVertical: 16,
@@ -107,10 +107,24 @@ export default function Locais() {
           flexDirection: 'row',
           justifyContent: 'space-between'
         }}>
-          <Text style={{
-            fontSize: 20,
-            fontWeight: '700'
-          }}>{local.nm_local}</Text>
+          <View style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 3,
+            width: 300,
+            // borderWidth: 1
+          }}>
+            <TouchableOpacity style={{
+              padding: 5,
+            }}
+              onPress={() => navigation.goBack()}>
+              <AntDesign name="caretleft" size={30} color="#16FA9F" />
+            </TouchableOpacity>
+            <Text style={{
+              fontSize: 20,
+              fontWeight: '700'
+            }}>{local.nm_local}</Text>
+          </View>
           <TouchableOpacity onPress={() => setHeart(!heart)}>
             {heart ? (
               < AntDesign name="hearto" size={25} color="red" />
@@ -244,7 +258,7 @@ export default function Locais() {
             paddingTop: 15,
             borderRadius: 10,
             backgroundColor: '#5386C9'
-          }} onPress={() => navigation.navigate('mapa', { local })}>
+          }} onPress={() => navigation.navigate('mapaLocal', { local })}>
             <Text style={{
               color: '#fff',
               fontWeight: '600'
@@ -252,7 +266,7 @@ export default function Locais() {
           </TouchableOpacity>
 
 
-          {/* <TouchableOpacity style={{
+          <TouchableOpacity style={{
             paddingLeft: 35,
             paddingRight: 35,
             paddingBottom: 15,
@@ -264,7 +278,7 @@ export default function Locais() {
               color: '#fff',
               fontWeight: '600'
             }}>Abrir teste</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
 
 
         </View>

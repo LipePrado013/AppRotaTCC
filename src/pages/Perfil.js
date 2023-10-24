@@ -2,14 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import { Text, ScrollView, View, TouchableOpacity, Image, FlatList } from "react-native";
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import perfil from '../assets/img/perfil.png'
-import aquario from '../assets/img/Aquario.png'
-import quebramar from '../assets/img/quebraMar.png'
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function Perfil() {
 
   const route = useRoute()
-
   const navigation = useNavigation()
 
   console.log(route)

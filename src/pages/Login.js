@@ -3,14 +3,49 @@ import img from '../assets/img/logo.png'
 import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useEffect } from "react";
 
 
 export default function Login() {
   // const route = useRoute();
   const navigation = useNavigation()
 
+
+  // api 
+  const [users, setUsers] = useState([]);
+  // const [destaques, setDestaques] = useState([]);
+
+  function data() {
+    fetch('http://192.168.15.13:80/API-Rota/users') //mudar o ip da maquina para que a API funcione 
+      .then((Response) => Response.json())
+      .then(json => {
+        setUsers(json) //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
+      })
+      .catch(err => console.error(err))
+  }
+
+  // console.log(users)
+
+  useEffect(() => {
+    data()
+  }, []);
+  // api
+
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+
+
+
+
+  // function login() {
+  //   if (email === users.map(user => user.cd_email)) {
+  //     navigation.navigate('main', { screen: 'home' })
+  //   } else {
+  //     console.log('login')
+  //     // navigation.navigate('main', { screen: 'home' })
+  //   }
+  // }
+
 
   return (
     <>
@@ -26,9 +61,8 @@ export default function Login() {
           secureTextEntry={true} placeholder="Senha" />
 
         <TouchableOpacity style={styles.btnLogar}
-          onPress={() => navigation.navigate(
-            'main', { screen: 'home', params: { nome: email } },
-          )}>
+          onPress={() => navigation.navigate('main', { screen: 'home' })}>
+
           <Text style={styles.textBTN}>
             Logar
           </Text>
@@ -36,6 +70,11 @@ export default function Login() {
         <TouchableOpacity style={styles.btncadastar} onPress={() => navigation.navigate('cadastrar')}>
           <Text style={styles.textBTN}>
             Cadastar-se
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btncadastar} onPress={''}>
+          <Text style={styles.textBTN}>
+            teste
           </Text>
         </TouchableOpacity>
 
