@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native"
 import img from '../assets/img/logo.png'
-import { useState } from "react";
+import { cloneElement, useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
@@ -33,36 +33,34 @@ export default function Login() {
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  // console.log(email)
 
+  function login() {
+    // Verifique se o email fornecido está na lista de usuários
+    const user = users.find(userData => userData.cd_email === email && userData.cd_senha === senha);
 
-
-
-  // function login() {
-  //   if (email === users.map(user => user.cd_email)) {
-  //     navigation.navigate('main', { screen: 'home' })
-  //   } else {
-  //     console.log('login')
-  //     // navigation.navigate('main', { screen: 'home' })
-  //   }
-  // }
-
+    if (user) {
+      // Se login bem sucedido, direciona para a página "Home"
+      navigation.navigate('main', { screen: 'home', user });
+    } else {
+      //Se login estiver errado dará erro
+      console.log('Email ou senha inválidos');
+    }
+  }
 
   return (
     <>
       <StatusBar style="light" />
       <View style={styles.container}>
         <Image style={styles.img} source={img} />
-
         <TextInput style={styles.input}
           onChangeText={value => setEmail(value)}
           placeholder="E-mail" />
         <TextInput style={styles.input}
           onChangeText={value => setSenha(value)}
           secureTextEntry={true} placeholder="Senha" />
-
         <TouchableOpacity style={styles.btnLogar}
-          onPress={() => navigation.navigate('main', { screen: 'home' })}>
-
+          onPress={login}>
           <Text style={styles.textBTN}>
             Logar
           </Text>
@@ -72,12 +70,6 @@ export default function Login() {
             Cadastar-se
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btncadastar} onPress={''}>
-          <Text style={styles.textBTN}>
-            teste
-          </Text>
-        </TouchableOpacity>
-
       </View>
     </>
   )
@@ -104,11 +96,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#fff",
     padding: 2,
-    borderRadius: 10,
+    paddingHorizontal: 10,
+    borderRadius: 5,
     width: 300,
-    height: 40,
+    height: 50,
     borderWidth: 0,
-    fontSize: 20,
+    fontSize: 22,
   },
   btnLogar: {
     padding: 10,
@@ -116,7 +109,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#16FA9F',
+    backgroundColor: '#F59230',
     borderRadius: 10,
     borderWidth: 0,
     color: '#fff'
@@ -127,13 +120,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#096641',
+
     borderRadius: 10,
     borderWidth: 0,
-    color: '#fff'
+
   },
   textBTN: {
     fontSize: 17,
     fontWeight: 'bold',
+    color: "#fff"
   },
 });

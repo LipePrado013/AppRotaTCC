@@ -1,8 +1,11 @@
 import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native"
 import img from '../assets/img/logo.png'
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Cadastro({ navigation }) {
+export default function Cadastro() {
+  const navigation = useNavigation()
+
 
   const [nome, setNome] = useState()
   const [SobreNome, setSobreNome] = useState()
@@ -11,18 +14,12 @@ export default function Cadastro({ navigation }) {
   const [senha, setSenha] = useState()
   const [ConfirmaSenha, setConfirmaSenha] = useState()
 
-  // console.log(
-  //     'nome ' + nome,
-  //     'sobrenome ' + SobreNome,
-  //     'email ' + email,
-  //     'senha ' + senha,
-  //     'confrmasenha ' + ConfirmaSenha
-  // )
+
 
   return (
     <>
       <View style={styles.container}>
-        <Image style={styles.img} source={img} />
+        {/* <Image style={styles.img} source={img} /> */}
 
         <TextInput style={styles.input}
           onChangeText={value => setNome(value)}
@@ -54,7 +51,7 @@ export default function Cadastro({ navigation }) {
           padding: 10
         }} onPress={() => navigation.navigate('login')}>
           <Text style={{ color: '#FFF', fontSize: 17 }}>
-            Ja tenho conta
+            Já tenho conta
           </Text>
         </TouchableOpacity>
 
@@ -84,11 +81,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#fff",
     padding: 2,
-    borderRadius: 10,
+    paddingHorizontal: 10,
+    borderRadius: 5,
     width: 300,
-    height: 40,
+    height: 50,
     borderWidth: 0,
-    fontSize: 20,
+    fontSize: 22,
   },
   btnLogar: {
     padding: 10,
@@ -96,24 +94,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#16FA9F',
+    backgroundColor: '#F59230',
     borderRadius: 10,
     borderWidth: 0,
-    color: '#fff'
-  },
-  btncadastar: {
-    padding: 10,
-    width: 120,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#096641',
-    borderRadius: 10,
-    borderWidth: 0,
-    color: '#fff'
+
   },
   textBTN: {
     fontSize: 17,
+    color: "#fff",
     fontWeight: 'bold',
   },
 });

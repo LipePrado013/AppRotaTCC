@@ -46,16 +46,7 @@ export default function MapGeral() {
   useEffect(() => {
     requestLocationPermissions();
   }, [])
-  // useEffect(() => {
-  //   watchPositionAsync({
-  //     accuracy: LocationAccuracy.Highest,
-  //     timeInterval: 1000,
-  //     distanceInterval: 1
-  //   }, (response) => {
-  //     // console.log('nova localização', response)
-  //     setLocation(response)
-  //   })
-  // }, [])
+
 
   return (
     <View style={styles.container}>

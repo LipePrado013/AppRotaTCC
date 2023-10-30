@@ -34,12 +34,11 @@ export default function Perfil() {
             padding: 5,
             width: 40,
           }} onPress={() => navigation.goBack()}>
-            {/* <AntDesign name="caretleft" size={30} color="#16FA9F" /> */}
-            <AntDesign name="leftcircle" size={30} color="#16FA9F" />
+            <AntDesign name="leftcircle" size={30} color="#F59230" />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('login')}>
-            <Ionicons name="exit-outline" size={30} color="#16FA9F" />
+            <Ionicons name="exit-outline" size={30} color="#F59230" />
           </TouchableOpacity>
 
         </View>

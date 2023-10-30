@@ -7,21 +7,23 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 
 // onPress={() => navigation.navigate('login')} 
 export default function Home() {
-  const route = useRoute()
   const navigation = useNavigation()
 
-  const [locais, setLocais] = useState([]);
+  const [recomendados, setRecomendado] = useState([]);
   const [destaques, setDestaques] = useState([]);
+  const [maisLocais, setMaisLocais] = useState([])
 
   function data() {
     fetch('http://192.168.15.13:80/API-Rota/') //mudar o ip da maquina para que a API funcione 
       .then((Response) => Response.json())
       .then(json => {
-        setLocais(json.splice(0, 2)); //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
-        setDestaques(json) //aq ele vai ta pegado oq ta sobrando do array, sem o 0 e 1 do array. 
+        setMaisLocais(json);
+        setDestaques(json); //aq ele vai ta pegado oq ta sobrando do array, sem o 0 e 1 do array. 
+        setRecomendado(json.splice(3, 2)); //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
       })
       .catch(err => console.error(err))
   }
+
 
   useEffect(() => {
     data()
@@ -54,15 +56,15 @@ export default function Home() {
           }}
             onPress={() => navigation.navigate('perfil')}
           >
-            <Text style={{
-            }}>Olá, </Text>
+            {/* <Text style={{
+            }}>Olá, </Text> */}
             <FontAwesome5 name="user-circle" size={30} color="black" />
           </TouchableOpacity>
         </View>
         <View style={styles.container}>{/*container */}
           <View style={styles.conteudo}>
             {
-              locais.map((local) => (
+              recomendados.map((local) => (
                 <TouchableOpacity key={local.id_local} style={{
                   width: '100%',
                   height: 150,
@@ -120,8 +122,13 @@ export default function Home() {
               padding: 10,
             }}> Mais lugares </Text>
           </View>
-          <View style={{ paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', borderWidth: 1 }}>
-            {destaques.map(local =>
+          <View style={{
+            paddingHorizontal: 16,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+          }}>
+            {maisLocais.map(local =>
               <TouchableOpacity key={local.id_local} style={{
                 backgroundColor: '#FFF',
                 borderRadius: 16,

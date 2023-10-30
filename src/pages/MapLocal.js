@@ -10,6 +10,7 @@ import { useEffect, useState, useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps'
 import { Image, StyleSheet, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function Map() {
@@ -45,15 +46,14 @@ export default function Map() {
 
   return (
     <View style={styles.container}>
-
+      <StatusBar style="darck" />
       {location &&
         <MapView style={styles.map}
           initialRegion={{
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
             latitudeDelta: 0.055,
-            longitudeDelta: 0.055
-
+            longitudeDelta: 0.055,
           }}
           showsUserLocation={true}
           loadingEnabled={true}
@@ -86,7 +86,7 @@ export default function Map() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10
+    marginTop: 25
   },
   map: {
     width: '100%',

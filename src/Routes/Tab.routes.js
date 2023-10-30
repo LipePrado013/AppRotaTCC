@@ -22,7 +22,7 @@ export default function TabRoutes() {
   return (
     <>
       <Tab.Navigator screenOptions={{
-        tabBarActiveTintColor: "#16FA9F",
+        tabBarActiveTintColor: "#F59230",
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
