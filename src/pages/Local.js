@@ -93,8 +93,7 @@ export default function Locais() {
       )}
       <ScrollView showsVerticalScrollIndicator={false} style={{
         paddingTop: 12,
-        backgroundColor: '#303030',
-
+        // backgroundColor: '#303030',
       }}>
 
         <View style={{

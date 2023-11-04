@@ -18,8 +18,8 @@ export default function Home() {
       .then((Response) => Response.json())
       .then(json => {
         setMaisLocais(json);
-        setDestaques(json); //aq ele vai ta pegado oq ta sobrando do array, sem o 0 e 1 do array. 
-        setRecomendado(json.splice(3, 2)); //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
+        setDestaques(json.splice(7, 5)); //aq ele vai ta pegado oq ta sobrando do array, sem o 0 e 1 do array. 
+        setRecomendado(json.splice(0, 2)); //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
       })
       .catch(err => console.error(err))
   }
@@ -46,7 +46,7 @@ export default function Home() {
           <Text style={{
             fontSize: 25,
             fontWeight: 'bold',
-          }}> Recomendados </Text>
+          }}> Mais visitados </Text>
           <TouchableOpacity style={{
             padding: 5,
             display: 'flex',
@@ -147,7 +147,7 @@ export default function Home() {
                   margin: 10,
                   fontWeight: 700,
                 }}>{local.nm_local}</Text>
-                <Text style={{ width: 150, textAlign: 'justify', }}>{local.tx_previa}</Text>
+                <Text style={{ width: 150, textAlign: 'center', }}>{local.tx_previa}</Text>
               </TouchableOpacity>
             )}
           </View>
