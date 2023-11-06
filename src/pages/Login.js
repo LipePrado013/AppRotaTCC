@@ -1,89 +1,156 @@
 import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native"
 import img from '../assets/img/logo.png'
-import { useState } from "react";
+import { cloneElement, useState } from "react";
+import { StatusBar } from 'expo-status-bar';
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useEffect } from "react";
+// import { LinearGradient } from "expo-linear-gradient";
+
 
 export default function Login() {
+  // const route = useRoute();
+  const navigation = useNavigation()
 
-    const [email, setEmail] = useState(null)
-    const [senha, setSenha] = useState(null)
-    return (
-        <>
-            <View style={styles.container}>
-                <Image style={styles.img} source={img} />
 
-                <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
-                    placeholder="E-mail" />
-                <TextInput style={styles.input}
-                    onChangeText={value => setSenha(value)}
-                    secureTextEntry={true} placeholder="Senha" />
+  // api 
+  const [users, setUsers] = useState([]);
+  // const [destaques, setDestaques] = useState([]);
 
-                <TouchableOpacity style={styles.btnLogar}>
-                    <Text style={styles.textBTN}>
-                        Logar
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btncadastar} >
-                    <Text style={styles.textBTN}>
-                        Cadastar-se
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        </>
-    )
+  function data() {
+    fetch('http://192.168.15.13:80/API-Rota/users') //mudar o ip da maquina para que a API funcione 
+      .then((Response) => Response.json())
+      .then(json => {
+        setUsers(json) //aqui ele vai pegar o indece(0, 2)é quantos eu quero que ele pegue.
+      })
+      .catch(err => console.error(err))
+  }
+
+  // console.log(users)
+
+  useEffect(() => {
+    data()
+  }, []);
+  // api
+
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  // console.log(email)
+
+  function login() {
+    // Verifique se o email fornecido está na lista de usuários
+    const user = users.find(userData => userData.cd_email === email && userData.cd_senha === senha);
+
+    if (user) {
+      // Se login bem sucedido, direciona para a página "Home"
+      navigation.navigate('main', { screen: 'home', user });
+    } else {
+      //Se login estiver errado dará erro
+      console.log('Email ou senha inválidos');
+      alert('Email ou senha inválidos')
+      // return <View style={{
+      //   borderWidth: 1,
+      //   width: 300,
+      //   height: 100,
+      //   backgroundColor: '#fff',
+      //   borderRadius: 10,
+      //   justifyContent: 'center',
+      //   alignItems: 'center'
+      // }}>
+      //   <Text style={{
+      //     fontSize: 20
+      //   }}>
+      //     Email ou senha inválido
+      //   </Text>
+      // </View>
+    }
+  }
+
+  return (
+    <>
+      <StatusBar style="light" />
+      <View style={styles.container}>
+        <Image style={styles.img} source={img} />
+        <TextInput style={styles.input}
+          onChangeText={value => setEmail(value)}
+          placeholder="E-mail" />
+        <TextInput style={styles.input}
+          onChangeText={value => setSenha(value)}
+          secureTextEntry={true} placeholder="Senha" />
+        <TouchableOpacity style={styles.btnLogar}
+          onPress={login}>
+          <Text style={styles.textBTN}>
+            Logar
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.btncadastar} onPress={() => navigation.navigate('cadastrar')}>
+
+          <Text style={styles.textBTN}>
+            Cadastar-se
+          </Text>
+
+        </TouchableOpacity>
+
+
+
+      </View>
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#303030',
-        gap: 20,
-    },
-    img: {
-        width: 120,
-        height: 200
-    },
-    imgLogo: {
-        width: 100
-    },
-    input: {
-        borderWidth: 1,
-        backgroundColor: "#fff",
-        padding: 2,
-        borderRadius: 10,
-        width: 300,
-        height: 40,
-        borderWidth: 0,
-        fontSize: 20,
-    },
-    btnLogar: {
-        padding: 10,
-        width: 120,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#16FA9F',
-        borderRadius: 10,
-        borderWidth: 0,
-        color: '#fff'
-    },
-    btncadastar: {
-        padding: 10,
-        width: 120,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#096641',
-        borderRadius: 10,
-        borderWidth: 0,
-        color: '#fff'
-    },
-    textBTN: {
-        fontSize: 17,
-        fontWeight: 'bold',
-    },
+  container: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#303030',
+    gap: 20,
+  },
+  img: {
+    width: 120,
+    height: 200
+  },
+  imgLogo: {
+    width: 100
+  },
+  input: {
+    borderWidth: 1,
+    backgroundColor: "#fff",
+    padding: 2,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    width: 300,
+    height: 50,
+    borderWidth: 0,
+    fontSize: 22,
+  },
+  btnLogar: {
+    padding: 10,
+    width: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F59230',
+    borderRadius: 10,
+    borderWidth: 0,
+    color: '#fff'
+  },
+  btncadastar: {
+    padding: 10,
+    width: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    borderRadius: 10,
+    borderWidth: 0,
+
+  },
+  textBTN: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: "#fff"
+  },
 });

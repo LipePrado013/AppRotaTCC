@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AppRota",
-    "slug": "AppRota",
+    "name": "teste1rota",
+    "slug": "teste1rota",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,14 +22,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.lipepraado.AppRota"
+      "package": "com.lipepraado.appRota"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "expo-localization"
+    ],
     "extra": {
       "eas": {
-        "projectId": "c3a4acd9-4b87-4606-b7fd-74eb5a4e95ec"
+        "projectId": "65cc04de-2e2d-40b9-9d76-3e24152680b7"
       }
     }
   }
