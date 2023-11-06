@@ -4,6 +4,7 @@ import { cloneElement, useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
+// import { LinearGradient } from "expo-linear-gradient";
 
 
 export default function Login() {
@@ -45,6 +46,22 @@ export default function Login() {
     } else {
       //Se login estiver errado dará erro
       console.log('Email ou senha inválidos');
+      alert('Email ou senha inválidos')
+      // return <View style={{
+      //   borderWidth: 1,
+      //   width: 300,
+      //   height: 100,
+      //   backgroundColor: '#fff',
+      //   borderRadius: 10,
+      //   justifyContent: 'center',
+      //   alignItems: 'center'
+      // }}>
+      //   <Text style={{
+      //     fontSize: 20
+      //   }}>
+      //     Email ou senha inválido
+      //   </Text>
+      // </View>
     }
   }
 
@@ -65,11 +82,17 @@ export default function Login() {
             Logar
           </Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.btncadastar} onPress={() => navigation.navigate('cadastrar')}>
+
           <Text style={styles.textBTN}>
             Cadastar-se
           </Text>
+
         </TouchableOpacity>
+
+
+
       </View>
     </>
   )
